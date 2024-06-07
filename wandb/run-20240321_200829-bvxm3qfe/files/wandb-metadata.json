@@ -1,0 +1,45 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.10.13",
+    "heartbeatAt": "2024-03-22T01:08:29.616690",
+    "startedAt": "2024-03-22T01:08:29.179496",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py",
+    "codePathLocal": "Build_Model_AMN.py",
+    "codePath": "AMN/omic_amn_mm/Build_Model_AMN.py",
+    "git": {
+        "remote": null,
+        "commit": null
+    },
+    "email": "ea.sara@ymail.com",
+    "root": "/Users/sea/Projects",
+    "host": "sfs-wifi-dhcp-10-142-13-108.wifi.sfsu.edu",
+    "username": "sea",
+    "executable": "/Users/sea/opt/anaconda3/envs/mlpp/bin/python3",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 2400,
+        "min": 2400,
+        "max": 2400
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2400,
+            "min": 2400,
+            "max": 2400
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 926.3517189025879,
+            "used": 9.436630249023438
+        }
+    },
+    "memory": {
+        "total": 32.0
+    }
+}

@@ -1,0 +1,60 @@
+Epoch 1/200000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+S  (47, 71)  Pin  (10, 71)
+Pout  (71, 71)
+<class 'tensorflow.python.framework.ops.Tensor'>
+Traceback (most recent call last):
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py", line 365, in <module>
+    reservoir, pred, stats, _ = train_evaluate_model(model, verbose=True)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1906, in train_evaluate_model
+    train_model(param, X, Y, X, Y, verbose=verbose)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1849, in train_model
+    history = Net.model.fit(Xtrain, Ytrain,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 1269, in autograph_handler
+    raise e.ag_error_metadata.to_exception(e)
+tensorflow.python.autograph.impl.api.StagingError: in user code:
+    File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 1249, in train_function  *
+        return step_function(self, iterator)
+    File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 439, in loss  *
+        loss = compute_loss(y_true, y_pred, Vbf, Vin, S, Pin, Pout)
+    File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 355, in compute_loss  *
+        num_rxns = y_true.shape[2]
+    IndexError: tuple index out of range
+Traceback (most recent call last):
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py", line 365, in <module>
+    reservoir, pred, stats, _ = train_evaluate_model(model, verbose=True)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1906, in train_evaluate_model
+    train_model(param, X, Y, X, Y, verbose=verbose)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1849, in train_model
+    history = Net.model.fit(Xtrain, Ytrain,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 1269, in autograph_handler
+    raise e.ag_error_metadata.to_exception(e)
+tensorflow.python.autograph.impl.api.StagingError: in user code:
+    File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 1249, in train_function  *
+        return step_function(self, iterator)
+    File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 439, in loss  *
+        loss = compute_loss(y_true, y_pred, Vbf, Vin, S, Pin, Pout)
+    File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 355, in compute_loss  *
+        num_rxns = y_true.shape[2]
+    IndexError: tuple index out of range

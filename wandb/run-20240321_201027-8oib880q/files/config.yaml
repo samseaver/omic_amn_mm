@@ -1,0 +1,70 @@
+wandb_version: 1
+
+learning_rate:
+  desc: null
+  value: 1.0
+decay_rate:
+  desc: null
+  value: 0.9
+architecture:
+  desc: null
+  value: AMM_wt
+dataset:
+  desc: null
+  value: secMet
+epochs:
+  desc: null
+  value: 4
+bs:
+  desc: null
+  value: 5
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.13
+    cli_version: 0.16.2
+    framework: keras
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1711069827.217817
+    t:
+      1:
+      - 2
+      - 3
+      - 5
+      - 53
+      - 55
+      - 102
+      2:
+      - 2
+      - 3
+      - 5
+      - 53
+      - 55
+      - 102
+      3:
+      - 7
+      - 16
+      - 23
+      - 38
+      4: 3.10.13
+      5: 0.16.2
+      8:
+      - 5
+      13: darwin-x86_64
+    m:
+    - 1: epoch/epoch
+      6:
+      - 3
+    - 1: epoch/loss
+      5: 1
+      6:
+      - 1
+    - 1: epoch/val_loss
+      5: 1
+      6:
+      - 1
+    - 1: epoch/learning_rate
+      5: 1
+      6:
+      - 1

@@ -1,0 +1,1423 @@
+Epoch 1/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+S  (47, 71)  Pin  (10, 71)
+Pout  (71, 71)
+<class 'tensorflow.python.framework.ops.Tensor'>
+y_true  (5, 71)  y_pred  (5, 71)
+Vin  (5, 10)  Vbf  (5, 71)
+S  (47, 71)  Pin  (10, 71)
+Pout  (71, 71)
+(5,)
+loss type  <class 'tensorflow.python.framework.ops.Tensor'>
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+S  (47, 71)  Pin  (10, 71)
+Pout  (71, 71)
+<class 'tensorflow.python.framework.ops.Tensor'>
+y_true  (5, 71)  y_pred  (5, 71)
+Vin  (5, 10)  Vbf  (5, 71)
+S  (47, 71)  Pin  (10, 71)
+Pout  (71, 71)
+(5,)
+loss type  <class 'tensorflow.python.framework.ops.Tensor'>
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(5, 71), dtype=float32)
+RNN call ->  (5, 71)
+End RNN call
+S  (47, 71)  Pin  (10, 71)
+Pout  (71, 71)
+<class 'tensorflow.python.framework.ops.Tensor'>
+y_true  (5, 71)  y_pred  (5, 71)
+Vin  (5, 10)  Vbf  (5, 71)
+S  (47, 71)  Pin  (10, 71)
+Pout  (71, 71)
+(5,)
+loss type  <class 'tensorflow.python.framework.ops.Tensor'>
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+1/1 - 8s - loss: 1.2189e-04 - val_loss: 9.9284e-05 - 8s/epoch - 8s/step
+Epoch 2/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 9.9284e-05 - val_loss: 7.8961e-05 - 1s/epoch - 1s/step
+Epoch 3/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 7.8961e-05 - val_loss: 6.1559e-05 - 1s/epoch - 1s/step
+Epoch 4/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+1/1 - 1s - loss: 6.1559e-05 - val_loss: 4.7243e-05 - 1s/epoch - 1s/step
+Epoch 5/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 4.7243e-05 - val_loss: 3.5940e-05 - 1s/epoch - 1s/step
+Epoch 6/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 3.5940e-05 - val_loss: 2.7448e-05 - 1s/epoch - 1s/step
+Epoch 7/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+1/1 - 1s - loss: 2.7448e-05 - val_loss: 2.1481e-05 - 1s/epoch - 1s/step
+Epoch 8/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 2.1481e-05 - val_loss: 1.7597e-05 - 1s/epoch - 1s/step
+Epoch 9/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 1.7597e-05 - val_loss: 1.5393e-05 - 1s/epoch - 1s/step
+Epoch 10/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+1/1 - 1s - loss: 1.5393e-05 - val_loss: 1.4441e-05 - 1s/epoch - 1s/step
+Epoch 11/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 1.4441e-05 - val_loss: 1.4299e-05 - 1s/epoch - 1s/step
+Epoch 12/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 1.4299e-05 - val_loss: 1.4613e-05 - 1s/epoch - 1s/step
+Epoch 13/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+1/1 - 1s - loss: 1.4613e-05 - val_loss: 1.5121e-05 - 1s/epoch - 1s/step
+Epoch 14/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 1.5121e-05 - val_loss: 1.5682e-05 - 1s/epoch - 1s/step
+Epoch 15/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+1/1 - 1s - loss: 1.5682e-05 - val_loss: 1.6191e-05 - 1s/epoch - 1s/step
+Epoch 16/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states_0:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+1/1 - 1s - loss: 1.6191e-05 - val_loss: 1.6569e-05 - 1s/epoch - 1s/step
+Epoch 17/2000
+RNN states ->  Tensor("model/rnn/zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("model/rnn/while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("states:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+WARNING:absl:Found untraced functions such as _update_step_xla while saving (showing 1 of 1). These functions will not be directly callable after loading.
+[34m[1mwandb[39m[22m: Adding directory to artifact (./models)... Done. 0.0s
+Traceback (most recent call last):
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py", line 365, in <module>
+    reservoir, pred, stats, _ = train_evaluate_model(model, verbose=True)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1907, in train_evaluate_model
+    train_model(param, X, Y, X, Y, verbose=verbose)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1850, in train_model
+    history = Net.model.fit(Xtrain, Ytrain,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 1712, in fit
+    callbacks.on_epoch_end(epoch, epoch_logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/callbacks.py", line 454, in on_epoch_end
+    callback.on_epoch_end(epoch, logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/callbacks/model_checkpoint.py", line 140, in on_epoch_end
+    super().on_epoch_end(epoch, logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/callbacks.py", line 1476, in on_epoch_end
+    self._save_model(epoch=epoch, batch=None, logs=logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/callbacks.py", line 1563, in _save_model
+    self.model.save(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 2795, in save
+    save.save_model(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/save.py", line 167, in save_model
+    saved_model_save.save(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save.py", line 97, in save
+    saved_nodes, node_paths = save_lib.save_and_return_nodes(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 1267, in save_and_return_nodes
+    _build_meta_graph(obj, signatures, options, meta_graph_def))
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 1440, in _build_meta_graph
+    return _build_meta_graph_impl(obj, signatures, options, meta_graph_def)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 1383, in _build_meta_graph_impl
+    signatures = signature_serialization.find_function_to_export(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/signature_serialization.py", line 103, in find_function_to_export
+    for name, child in children:
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 177, in list_children
+    for name, child in super(_AugmentedGraphView, self).list_children(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/checkpoint/graph_view.py", line 75, in list_children
+    for name, ref in super(ObjectGraphView,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/checkpoint/trackable_view.py", line 84, in children
+    for name, ref in obj._trackable_children(save_type, **kwargs).items():
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/functional.py", line 460, in _trackable_children
+    dependencies.update(super()._trackable_children(save_type, **kwargs))
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 3738, in _trackable_children
+    children = super()._trackable_children(save_type, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/base_layer.py", line 3393, in _trackable_children
+    children = self._trackable_saved_model_saver.trackable_children(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/base_serialization.py", line 61, in trackable_children
+    children = self.objects_to_serialize(serialization_cache)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/layer_serialization.py", line 79, in objects_to_serialize
+    return self._get_serialized_attributes(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/layer_serialization.py", line 106, in _get_serialized_attributes
+    object_dict, function_dict = self._get_serialized_attributes_internal(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/model_serialization.py", line 57, in _get_serialized_attributes_internal
+    objects, functions = super()._get_serialized_attributes_internal(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/layer_serialization.py", line 117, in _get_serialized_attributes_internal
+    functions = save_impl.wrap_layer_functions(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 216, in wrap_layer_functions
+    with tracing_scope():
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 390, in tracing_scope
+    fn.get_concrete_function(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1215, in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1206, in _get_concrete_function_garbage_collected
+    concrete = self._variable_creation_fn._get_concrete_function_garbage_collected(  # pylint: disable=protected-access
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 192, in _get_concrete_function_garbage_collected
+    concrete_function, _ = self._maybe_define_concrete_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 157, in _maybe_define_concrete_function
+    return self._maybe_define_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 360, in _maybe_define_function
+    concrete_function = self._create_concrete_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 284, in _create_concrete_function
+    func_graph_module.func_graph_from_py_func(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 1283, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 645, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 632, in wrapper
+    ret = method(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 190, in wrap_with_training_arg
+    return control_flow_util.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/control_flow_util.py", line 108, in smart_cond
+    return tf.__internal__.smart_cond.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/smart_cond.py", line 52, in smart_cond
+    return true_fn()
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 192, in <lambda>
+    lambda: replace_training_and_call(True),
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 188, in replace_training_and_call
+    return wrapped_call(*new_args, **new_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 718, in call
+    return call_and_return_conditional_losses(inputs, *args, **kwargs)[0]
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 672, in __call__
+    return self.wrapped_call(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 880, in __call__
+    result = self._call(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 919, in _call
+    results = self._variable_creation_fn(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 133, in __call__
+    filtered_flat_args) = self._maybe_define_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 360, in _maybe_define_function
+    concrete_function = self._create_concrete_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 284, in _create_concrete_function
+    func_graph_module.func_graph_from_py_func(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 1283, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 645, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 632, in wrapper
+    ret = method(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 190, in wrap_with_training_arg
+    return control_flow_util.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/control_flow_util.py", line 108, in smart_cond
+    return tf.__internal__.smart_cond.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/smart_cond.py", line 52, in smart_cond
+    return true_fn()
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 192, in <lambda>
+    lambda: replace_training_and_call(True),
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 188, in replace_training_and_call
+    return wrapped_call(*new_args, **new_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 698, in call_and_return_conditional_losses
+    call_output = layer_call(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/layers/rnn/base_rnn.py", line 722, in call
+    last_output, outputs, states = backend.rnn(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1176, in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/backend.py", line 5151, in rnn
+    outputs = tuple(o.stack() for o in output_ta)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/backend.py", line 5151, in <genexpr>
+    outputs = tuple(o.stack() for o in output_ta)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 1201, in stack
+    return self._implementation.stack(name=name)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 561, in stack
+    value = list_ops.tensor_list_stack(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/list_ops.py", line 162, in tensor_list_stack
+    return gen_list_ops.tensor_list_stack(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/gen_list_ops.py", line 1371, in tensor_list_stack
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/op_def_library.py", line 795, in _apply_op_helper
+    op = g._create_op_internal(op_type_name, inputs, dtypes=None,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 749, in _create_op_internal
+    return super(FuncGraph, self)._create_op_internal(  # pylint: disable=protected-access
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 3798, in _create_op_internal
+    ret = Operation(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 2106, in __init__
+    c_op = _create_c_op(g, node_def, inputs, control_input_ops, op_def=op_def)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 1972, in _create_c_op
+    tf_stack.extract_stack_for_op(c_op, stacklevel=3)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/tf_stack.py", line 180, in extract_stack_for_op
+    _tf_stack.extract_stack_for_op(
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py", line 365, in <module>
+    reservoir, pred, stats, _ = train_evaluate_model(model, verbose=True)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1907, in train_evaluate_model
+    train_model(param, X, Y, X, Y, verbose=verbose)
+  File "/Users/sea/Projects/AMN/omic_amn_mm/Library/Build_Model.py", line 1850, in train_model
+    history = Net.model.fit(Xtrain, Ytrain,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 174, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 1712, in fit
+    callbacks.on_epoch_end(epoch, epoch_logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/callbacks.py", line 454, in on_epoch_end
+    callback.on_epoch_end(epoch, logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/wandb/integration/keras/callbacks/model_checkpoint.py", line 140, in on_epoch_end
+    super().on_epoch_end(epoch, logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/callbacks.py", line 1476, in on_epoch_end
+    self._save_model(epoch=epoch, batch=None, logs=logs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/callbacks.py", line 1563, in _save_model
+    self.model.save(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 2795, in save
+    save.save_model(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/save.py", line 167, in save_model
+    saved_model_save.save(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save.py", line 97, in save
+    saved_nodes, node_paths = save_lib.save_and_return_nodes(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 1267, in save_and_return_nodes
+    _build_meta_graph(obj, signatures, options, meta_graph_def))
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 1440, in _build_meta_graph
+    return _build_meta_graph_impl(obj, signatures, options, meta_graph_def)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 1383, in _build_meta_graph_impl
+    signatures = signature_serialization.find_function_to_export(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/signature_serialization.py", line 103, in find_function_to_export
+    for name, child in children:
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/saved_model/save.py", line 177, in list_children
+    for name, child in super(_AugmentedGraphView, self).list_children(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/checkpoint/graph_view.py", line 75, in list_children
+    for name, ref in super(ObjectGraphView,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/checkpoint/trackable_view.py", line 84, in children
+    for name, ref in obj._trackable_children(save_type, **kwargs).items():
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/functional.py", line 460, in _trackable_children
+    dependencies.update(super()._trackable_children(save_type, **kwargs))
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/training.py", line 3738, in _trackable_children
+    children = super()._trackable_children(save_type, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/engine/base_layer.py", line 3393, in _trackable_children
+    children = self._trackable_saved_model_saver.trackable_children(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/base_serialization.py", line 61, in trackable_children
+    children = self.objects_to_serialize(serialization_cache)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/layer_serialization.py", line 79, in objects_to_serialize
+    return self._get_serialized_attributes(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/layer_serialization.py", line 106, in _get_serialized_attributes
+    object_dict, function_dict = self._get_serialized_attributes_internal(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/model_serialization.py", line 57, in _get_serialized_attributes_internal
+    objects, functions = super()._get_serialized_attributes_internal(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/layer_serialization.py", line 117, in _get_serialized_attributes_internal
+    functions = save_impl.wrap_layer_functions(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 216, in wrap_layer_functions
+    with tracing_scope():
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 390, in tracing_scope
+    fn.get_concrete_function(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1215, in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1206, in _get_concrete_function_garbage_collected
+    concrete = self._variable_creation_fn._get_concrete_function_garbage_collected(  # pylint: disable=protected-access
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 192, in _get_concrete_function_garbage_collected
+    concrete_function, _ = self._maybe_define_concrete_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 157, in _maybe_define_concrete_function
+    return self._maybe_define_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 360, in _maybe_define_function
+    concrete_function = self._create_concrete_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 284, in _create_concrete_function
+    func_graph_module.func_graph_from_py_func(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 1283, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 645, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 632, in wrapper
+    ret = method(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 190, in wrap_with_training_arg
+    return control_flow_util.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/control_flow_util.py", line 108, in smart_cond
+    return tf.__internal__.smart_cond.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/smart_cond.py", line 52, in smart_cond
+    return true_fn()
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 192, in <lambda>
+    lambda: replace_training_and_call(True),
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 188, in replace_training_and_call
+    return wrapped_call(*new_args, **new_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 718, in call
+    return call_and_return_conditional_losses(inputs, *args, **kwargs)[0]
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 672, in __call__
+    return self.wrapped_call(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 880, in __call__
+    result = self._call(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 919, in _call
+    results = self._variable_creation_fn(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 133, in __call__
+    filtered_flat_args) = self._maybe_define_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 360, in _maybe_define_function
+    concrete_function = self._create_concrete_function(args, kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 284, in _create_concrete_function
+    func_graph_module.func_graph_from_py_func(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 1283, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 645, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 632, in wrapper
+    ret = method(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 190, in wrap_with_training_arg
+    return control_flow_util.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/utils/control_flow_util.py", line 108, in smart_cond
+    return tf.__internal__.smart_cond.smart_cond(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/smart_cond.py", line 52, in smart_cond
+    return true_fn()
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 192, in <lambda>
+    lambda: replace_training_and_call(True),
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/utils.py", line 188, in replace_training_and_call
+    return wrapped_call(*new_args, **new_kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/saving/legacy/saved_model/save_impl.py", line 698, in call_and_return_conditional_losses
+    call_output = layer_call(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/layers/rnn/base_rnn.py", line 722, in call
+    last_output, outputs, states = backend.rnn(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1176, in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/backend.py", line 5151, in rnn
+    outputs = tuple(o.stack() for o in output_ta)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/keras/backend.py", line 5151, in <genexpr>
+    outputs = tuple(o.stack() for o in output_ta)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 1201, in stack
+    return self._implementation.stack(name=name)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 561, in stack
+    value = list_ops.tensor_list_stack(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/list_ops.py", line 162, in tensor_list_stack
+    return gen_list_ops.tensor_list_stack(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/ops/gen_list_ops.py", line 1371, in tensor_list_stack
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/op_def_library.py", line 795, in _apply_op_helper
+    op = g._create_op_internal(op_type_name, inputs, dtypes=None,
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py", line 749, in _create_op_internal
+    return super(FuncGraph, self)._create_op_internal(  # pylint: disable=protected-access
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 3798, in _create_op_internal
+    ret = Operation(
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 2106, in __init__
+    c_op = _create_c_op(g, node_def, inputs, control_input_ops, op_def=op_def)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 1972, in _create_c_op
+    tf_stack.extract_stack_for_op(c_op, stacklevel=3)
+  File "/Users/sea/opt/anaconda3/envs/mlpp/lib/python3.10/site-packages/tensorflow/python/util/tf_stack.py", line 180, in extract_stack_for_op
+    _tf_stack.extract_stack_for_op(
+KeyboardInterrupt
+RNN states ->  Tensor("zeros:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call
+RNN states ->  Tensor("while/Placeholder_2:0", shape=(None, 71), dtype=float32)
+RNN call ->  (None, 71)
+End RNN call

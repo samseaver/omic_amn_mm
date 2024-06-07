@@ -1,0 +1,27 @@
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_setup.py:_flush():76] Current SDK version is 0.16.2
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_setup.py:_flush():76] Configure stats pid to 58862
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_setup.py:_flush():76] Loading settings from /Users/sea/.config/wandb/settings
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_setup.py:_flush():76] Loading settings from /Users/sea/Projects/AMN/omic_amn_mm/wandb/settings
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'AMN/omic_amn_mm/Build_Model_AMN.py', 'program_abspath': '/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py', 'program': '/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py'}
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_init.py:_log_setup():526] Logging user logs to /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_201027-8oib880q/logs/debug.log
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_init.py:_log_setup():527] Logging internal logs to /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_201027-8oib880q/logs/debug-internal.log
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_init.py:init():566] calling init triggers
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_init.py:init():573] wandb.init called with sweep_config: {}
+config: {'learning_rate': 1.0, 'decay_rate': 0.9, 'architecture': 'AMM_wt', 'dataset': 'secMet', 'epochs': 4, 'bs': 5}
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_init.py:init():616] starting backend
+2024-03-21 20:10:27,214 INFO    MainThread:58862 [wandb_init.py:init():620] setting up manager
+2024-03-21 20:10:27,215 INFO    MainThread:58862 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2024-03-21 20:10:27,217 INFO    MainThread:58862 [wandb_init.py:init():628] backend started and connected
+2024-03-21 20:10:27,220 INFO    MainThread:58862 [wandb_init.py:init():720] updated telemetry
+2024-03-21 20:10:27,221 INFO    MainThread:58862 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-03-21 20:10:27,499 INFO    MainThread:58862 [wandb_run.py:_on_init():2254] communicating current version
+2024-03-21 20:10:27,575 INFO    MainThread:58862 [wandb_run.py:_on_init():2263] got version response upgrade_message: "wandb version 0.16.4 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-03-21 20:10:27,575 INFO    MainThread:58862 [wandb_init.py:init():804] starting run threads in backend
+2024-03-21 20:10:27,678 INFO    MainThread:58862 [wandb_run.py:_console_start():2233] atexit reg
+2024-03-21 20:10:27,678 INFO    MainThread:58862 [wandb_run.py:_redirect():2088] redirect: wrap_raw
+2024-03-21 20:10:27,678 INFO    MainThread:58862 [wandb_run.py:_redirect():2153] Wrapping output streams.
+2024-03-21 20:10:27,678 INFO    MainThread:58862 [wandb_run.py:_redirect():2178] Redirects installed.
+2024-03-21 20:10:27,679 INFO    MainThread:58862 [wandb_init.py:init():847] run started, returning control to user process
+2024-03-21 20:10:42,379 WARNING MsgRouterThr:58862 [router.py:message_loop():77] message_loop has been closed

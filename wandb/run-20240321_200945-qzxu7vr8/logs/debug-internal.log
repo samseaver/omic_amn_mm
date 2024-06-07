@@ -1,0 +1,185 @@
+2024-03-21 20:09:45,780 INFO    StreamThr :58833 [internal.py:wandb_internal():86] W&B internal server running at pid: 58833, started at: 2024-03-21 20:09:45.780193
+2024-03-21 20:09:45,781 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: status
+2024-03-21 20:09:45,784 INFO    WriterThread:58833 [datastore.py:open_for_write():87] open: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/run-qzxu7vr8.wandb
+2024-03-21 20:09:45,784 DEBUG   SenderThread:58833 [sender.py:send():382] send: header
+2024-03-21 20:09:45,785 DEBUG   SenderThread:58833 [sender.py:send():382] send: run
+2024-03-21 20:09:46,107 INFO    SenderThread:58833 [dir_watcher.py:__init__():211] watching files in: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files
+2024-03-21 20:09:46,108 INFO    SenderThread:58833 [sender.py:_start_run_threads():1136] run started: qzxu7vr8 with start time 1711069785.781227
+2024-03-21 20:09:46,108 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: check_version
+2024-03-21 20:09:46,108 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: check_version
+2024-03-21 20:09:46,190 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: run_start
+2024-03-21 20:09:46,215 DEBUG   HandlerThread:58833 [system_info.py:__init__():27] System info init
+2024-03-21 20:09:46,215 DEBUG   HandlerThread:58833 [system_info.py:__init__():42] System info init done
+2024-03-21 20:09:46,215 INFO    HandlerThread:58833 [system_monitor.py:start():194] Starting system monitor
+2024-03-21 20:09:46,215 INFO    SystemMonitor:58833 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-03-21 20:09:46,216 INFO    HandlerThread:58833 [system_monitor.py:probe():214] Collecting system info
+2024-03-21 20:09:46,216 DEBUG   HandlerThread:58833 [system_info.py:probe():151] Probing system
+2024-03-21 20:09:46,217 INFO    SystemMonitor:58833 [interfaces.py:start():190] Started cpu monitoring
+2024-03-21 20:09:46,217 INFO    SystemMonitor:58833 [interfaces.py:start():190] Started disk monitoring
+2024-03-21 20:09:46,218 INFO    SystemMonitor:58833 [interfaces.py:start():190] Started memory monitoring
+2024-03-21 20:09:46,219 INFO    SystemMonitor:58833 [interfaces.py:start():190] Started network monitoring
+2024-03-21 20:09:46,220 DEBUG   HandlerThread:58833 [system_info.py:_probe_git():136] Probing git
+2024-03-21 20:09:46,262 DEBUG   HandlerThread:58833 [system_info.py:_probe_git():144] Probing git done
+2024-03-21 20:09:46,262 DEBUG   HandlerThread:58833 [system_info.py:probe():199] Probing system done
+2024-03-21 20:09:46,263 DEBUG   HandlerThread:58833 [system_monitor.py:probe():223] {'os': 'macOS-10.16-x86_64-i386-64bit', 'python': '3.10.13', 'heartbeatAt': '2024-03-22T01:09:46.216745', 'startedAt': '2024-03-22T01:09:45.775183', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/sea/Projects/AMN/omic_amn_mm/Build_Model_AMN.py', 'codePathLocal': 'Build_Model_AMN.py', 'codePath': 'AMN/omic_amn_mm/Build_Model_AMN.py', 'git': {'remote': None, 'commit': None}, 'email': 'ea.sara@ymail.com', 'root': '/Users/sea/Projects', 'host': 'sfs-wifi-dhcp-10-142-13-108.wifi.sfsu.edu', 'username': 'sea', 'executable': '/Users/sea/opt/anaconda3/envs/mlpp/bin/python3', 'cpu_count': 8, 'cpu_count_logical': 8, 'cpu_freq': {'current': 2400, 'min': 2400, 'max': 2400}, 'cpu_freq_per_core': [{'current': 2400, 'min': 2400, 'max': 2400}], 'disk': {'/': {'total': 926.3517189025879, 'used': 9.436630249023438}}, 'memory': {'total': 32.0}}
+2024-03-21 20:09:46,263 INFO    HandlerThread:58833 [system_monitor.py:probe():224] Finished collecting system info
+2024-03-21 20:09:46,263 INFO    HandlerThread:58833 [system_monitor.py:probe():227] Publishing system info
+2024-03-21 20:09:46,263 DEBUG   HandlerThread:58833 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-03-21 20:09:46,296 DEBUG   HandlerThread:58833 [system_info.py:_save_conda():220] Saving conda packages done
+2024-03-21 20:09:46,297 INFO    HandlerThread:58833 [system_monitor.py:probe():229] Finished publishing system info
+2024-03-21 20:09:46,303 DEBUG   SenderThread:58833 [sender.py:send():382] send: files
+2024-03-21 20:09:46,303 INFO    SenderThread:58833 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-03-21 20:09:46,308 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: python_packages
+2024-03-21 20:09:46,308 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: python_packages
+2024-03-21 20:09:46,309 DEBUG   SenderThread:58833 [sender.py:send():382] send: telemetry
+2024-03-21 20:09:46,310 DEBUG   SenderThread:58833 [sender.py:send():382] send: telemetry
+2024-03-21 20:09:46,310 DEBUG   SenderThread:58833 [sender.py:send():382] send: metric
+2024-03-21 20:09:46,310 DEBUG   SenderThread:58833 [sender.py:send():382] send: telemetry
+2024-03-21 20:09:46,310 DEBUG   SenderThread:58833 [sender.py:send():382] send: metric
+2024-03-21 20:09:46,310 WARNING SenderThread:58833 [sender.py:send_metric():1354] Seen metric with glob (shouldn't happen)
+2024-03-21 20:09:46,312 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-21 20:09:46,312 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-21 20:09:46,312 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: stop_status
+2024-03-21 20:09:46,698 INFO    wandb-upload_0:58833 [upload_job.py:push():131] Uploaded file /var/folders/s9/vvd64z5927gbj3663y621llr0000gq/T/tmp76fi3cy8wandb/sha1spqt-wandb-metadata.json
+2024-03-21 20:09:46,773 DEBUG   SenderThread:58833 [sender.py:send():382] send: exit
+2024-03-21 20:09:46,773 INFO    SenderThread:58833 [sender.py:send_exit():589] handling exit code: 1
+2024-03-21 20:09:46,773 INFO    SenderThread:58833 [sender.py:send_exit():591] handling runtime: 0
+2024-03-21 20:09:46,773 INFO    SenderThread:58833 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-03-21 20:09:46,773 INFO    SenderThread:58833 [sender.py:send_exit():597] send defer
+2024-03-21 20:09:46,774 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,774 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 0
+2024-03-21 20:09:46,774 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,774 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-03-21 20:09:46,774 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 1
+2024-03-21 20:09:46,774 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,774 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 1
+2024-03-21 20:09:46,774 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,774 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-03-21 20:09:46,774 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 2
+2024-03-21 20:09:46,774 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,774 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 2
+2024-03-21 20:09:46,774 INFO    HandlerThread:58833 [system_monitor.py:finish():203] Stopping system monitor
+2024-03-21 20:09:46,774 INFO    HandlerThread:58833 [interfaces.py:finish():202] Joined cpu monitor
+2024-03-21 20:09:46,774 DEBUG   SystemMonitor:58833 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-03-21 20:09:46,774 INFO    HandlerThread:58833 [interfaces.py:finish():202] Joined disk monitor
+2024-03-21 20:09:46,774 DEBUG   SystemMonitor:58833 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-03-21 20:09:46,774 INFO    HandlerThread:58833 [interfaces.py:finish():202] Joined memory monitor
+2024-03-21 20:09:46,775 DEBUG   SystemMonitor:58833 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-03-21 20:09:46,775 INFO    HandlerThread:58833 [interfaces.py:finish():202] Joined network monitor
+2024-03-21 20:09:46,775 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,775 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-03-21 20:09:46,775 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 3
+2024-03-21 20:09:46,775 DEBUG   SenderThread:58833 [sender.py:send():382] send: stats
+2024-03-21 20:09:46,775 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,775 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 3
+2024-03-21 20:09:46,776 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,776 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-03-21 20:09:46,776 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 4
+2024-03-21 20:09:46,776 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,776 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 4
+2024-03-21 20:09:46,776 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,776 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-03-21 20:09:46,776 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 5
+2024-03-21 20:09:46,776 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,776 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 5
+2024-03-21 20:09:46,776 DEBUG   SenderThread:58833 [sender.py:send():382] send: summary
+2024-03-21 20:09:46,776 INFO    SenderThread:58833 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-03-21 20:09:46,776 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,776 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-03-21 20:09:46,776 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 6
+2024-03-21 20:09:46,776 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,776 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 6
+2024-03-21 20:09:46,776 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,777 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-03-21 20:09:46,779 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 20:09:46,856 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 7
+2024-03-21 20:09:46,856 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:46,857 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 7
+2024-03-21 20:09:46,857 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:46,857 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-03-21 20:09:47,118 INFO    Thread-12 :58833 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/config.yaml
+2024-03-21 20:09:47,118 INFO    Thread-12 :58833 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/conda-environment.yaml
+2024-03-21 20:09:47,119 INFO    Thread-12 :58833 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/output.log
+2024-03-21 20:09:47,119 INFO    Thread-12 :58833 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/requirements.txt
+2024-03-21 20:09:47,119 INFO    Thread-12 :58833 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/wandb-summary.json
+2024-03-21 20:09:47,119 INFO    Thread-12 :58833 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/wandb-metadata.json
+2024-03-21 20:09:47,779 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-21 20:09:48,811 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 8
+2024-03-21 20:09:48,811 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: poll_exit
+2024-03-21 20:09:48,811 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:48,812 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 8
+2024-03-21 20:09:48,812 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:48,812 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-03-21 20:09:48,812 INFO    SenderThread:58833 [job_builder.py:build():296] Attempting to build job artifact
+2024-03-21 20:09:48,813 INFO    SenderThread:58833 [job_builder.py:_get_source_type():437] no source found
+2024-03-21 20:09:48,813 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 9
+2024-03-21 20:09:48,813 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:48,813 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 9
+2024-03-21 20:09:48,813 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:48,813 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-03-21 20:09:48,813 INFO    SenderThread:58833 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-03-21 20:09:49,125 INFO    Thread-12 :58833 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/output.log
+2024-03-21 20:09:49,126 INFO    SenderThread:58833 [dir_watcher.py:finish():388] scan: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files
+2024-03-21 20:09:49,126 INFO    SenderThread:58833 [dir_watcher.py:finish():402] scan save: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/requirements.txt requirements.txt
+2024-03-21 20:09:49,126 INFO    SenderThread:58833 [dir_watcher.py:finish():402] scan save: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/output.log output.log
+2024-03-21 20:09:49,127 INFO    SenderThread:58833 [dir_watcher.py:finish():402] scan save: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/config.yaml config.yaml
+2024-03-21 20:09:49,127 INFO    SenderThread:58833 [dir_watcher.py:finish():402] scan save: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/wandb-summary.json wandb-summary.json
+2024-03-21 20:09:49,130 INFO    SenderThread:58833 [dir_watcher.py:finish():402] scan save: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/conda-environment.yaml conda-environment.yaml
+2024-03-21 20:09:49,135 INFO    SenderThread:58833 [dir_watcher.py:finish():402] scan save: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/wandb-metadata.json wandb-metadata.json
+2024-03-21 20:09:49,135 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 10
+2024-03-21 20:09:49,136 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:49,136 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 10
+2024-03-21 20:09:49,137 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:49,137 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-03-21 20:09:49,137 INFO    SenderThread:58833 [file_pusher.py:finish():175] shutting down file pusher
+2024-03-21 20:09:49,419 INFO    wandb-upload_3:58833 [upload_job.py:push():131] Uploaded file /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/wandb-summary.json
+2024-03-21 20:09:49,466 INFO    wandb-upload_2:58833 [upload_job.py:push():131] Uploaded file /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/config.yaml
+2024-03-21 20:09:49,488 INFO    wandb-upload_0:58833 [upload_job.py:push():131] Uploaded file /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/output.log
+2024-03-21 20:09:49,491 INFO    wandb-upload_1:58833 [upload_job.py:push():131] Uploaded file /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/files/requirements.txt
+2024-03-21 20:09:49,695 INFO    Thread-11 (_thread_body):58833 [sender.py:transition_state():617] send defer: 11
+2024-03-21 20:09:49,695 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:49,695 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 11
+2024-03-21 20:09:49,696 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:49,696 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-03-21 20:09:49,696 INFO    SenderThread:58833 [file_pusher.py:join():181] waiting for file pusher
+2024-03-21 20:09:49,696 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 12
+2024-03-21 20:09:49,696 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:49,696 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 12
+2024-03-21 20:09:49,696 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:49,696 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-03-21 20:09:49,696 INFO    SenderThread:58833 [file_stream.py:finish():595] file stream finish called
+2024-03-21 20:09:49,786 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-21 20:09:49,919 INFO    SenderThread:58833 [file_stream.py:finish():599] file stream finish is done
+2024-03-21 20:09:49,919 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 13
+2024-03-21 20:09:49,920 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: poll_exit
+2024-03-21 20:09:49,920 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:49,920 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 13
+2024-03-21 20:09:49,921 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:49,921 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-03-21 20:09:49,921 INFO    SenderThread:58833 [sender.py:transition_state():617] send defer: 14
+2024-03-21 20:09:49,921 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: defer
+2024-03-21 20:09:49,922 INFO    HandlerThread:58833 [handler.py:handle_request_defer():172] handle defer: 14
+2024-03-21 20:09:49,922 DEBUG   SenderThread:58833 [sender.py:send():382] send: final
+2024-03-21 20:09:49,922 DEBUG   SenderThread:58833 [sender.py:send():382] send: footer
+2024-03-21 20:09:49,922 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: defer
+2024-03-21 20:09:49,922 INFO    SenderThread:58833 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-03-21 20:09:49,922 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-21 20:09:49,922 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: poll_exit
+2024-03-21 20:09:49,923 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-21 20:09:49,923 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: poll_exit
+2024-03-21 20:09:49,923 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: server_info
+2024-03-21 20:09:49,923 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: server_info
+2024-03-21 20:09:49,924 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: get_summary
+2024-03-21 20:09:49,925 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: sampled_history
+2024-03-21 20:09:49,925 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-21 20:09:49,925 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: job_info
+2024-03-21 20:09:49,993 DEBUG   SenderThread:58833 [sender.py:send_request():409] send_request: job_info
+2024-03-21 20:09:49,994 INFO    MainThread:58833 [wandb_run.py:_footer_history_summary_info():3857] rendering history
+2024-03-21 20:09:49,994 INFO    MainThread:58833 [wandb_run.py:_footer_history_summary_info():3889] rendering summary
+2024-03-21 20:09:49,994 INFO    MainThread:58833 [wandb_run.py:_footer_sync_info():3816] logging synced files
+2024-03-21 20:09:49,996 DEBUG   HandlerThread:58833 [handler.py:handle_request():146] handle_request: shutdown
+2024-03-21 20:09:49,997 INFO    HandlerThread:58833 [handler.py:finish():869] shutting down handler
+2024-03-21 20:09:50,931 INFO    WriterThread:58833 [datastore.py:close():296] close: /Users/sea/Projects/AMN/omic_amn_mm/wandb/run-20240321_200945-qzxu7vr8/run-qzxu7vr8.wandb
+2024-03-21 20:09:50,996 INFO    SenderThread:58833 [sender.py:finish():1572] shutting down sender
+2024-03-21 20:09:50,996 INFO    SenderThread:58833 [file_pusher.py:finish():175] shutting down file pusher
+2024-03-21 20:09:50,996 INFO    SenderThread:58833 [file_pusher.py:join():181] waiting for file pusher
