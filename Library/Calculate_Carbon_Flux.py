@@ -89,6 +89,10 @@ class Calculate_Carbon_Flux:
                 print("no rxn for ", rxn_id)
 
 
+            # if 'bio' in rxn_id:
+            #     print(t_carbons)
+            #     print(abc)
+
             flux_io_df.loc[rxn_id] = flux_io_df.loc[rxn_id]*t_carbons #*coeff
             if verbose: print("---------------------------------- ")
 
@@ -141,6 +145,7 @@ class Calculate_Carbon_Flux:
         # Compute metabolite fluxes
         stoichio_df = co.util.array.create_stoichiometric_matrix(co_model, array_type="DataFrame")
         stoichio_df.sort_index(axis=1, inplace=True)
+        flux_df = flux_df.set_index('rxn_ID')
         flux_df.sort_index(inplace=True)
         print("stoichio_df ", stoichio_df.shape)
         print("flux_df ", flux_df.shape)

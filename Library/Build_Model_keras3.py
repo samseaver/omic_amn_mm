@@ -670,23 +670,24 @@ def Loss_all(V, Vin, Vout, Vlb, parameter, gradient=False, wt=False, p_sv=1):
     return L, dL1+dL2+dL3+dL4
 
 def custom_ReLU(V, Vout, Pout):
-    # Vpos = tf.zeros(V.shape, dtype=tf.dtypes.float32)
+    # All V values positive
     V = tf.keras.activations.relu(V)
+    # create the identity matrix
     Pout_i = np.identity(Pout.shape[0])
-
     if not tf.is_tensor(Pout):
         Pout = ops.convert_to_tensor(np.float32(Pout))
         Pout_i = ops.convert_to_tensor(np.float32(Pout_i))
 
+    # force values to Vbf constraints: if (V > Vout) set it to Vout
     V1 = Vout - ops.matmul(V, tf.transpose(Pout))
-    # print(V1.shape)
     V1 = Vout - tf.keras.activations.relu(V1)
-    # print(V1.shape)
 
+    # restore fluxes that do not have a Vbf using (1 - Pout)
     V2 = Pout_i - Pout
-    # print(V2.shape)
     V2 = ops.matmul(V, V2)
-    # print(V2.shape)
+
+    # Recreate V from values that have a Vbf constraints (V1) and those that do not and that
+    # remain unchanged (V2)
     Vpos = V1 + V2
 
     return Vpos
@@ -880,6 +881,7 @@ def Gradient_Descent(V, Vin, Vout, Vlb, parameter, mask, trainable=True, history
         V = V + diff
         # V = np.maximum.reduce([V,Vout])
         # V = tf.keras.activations.relu(V)
+        pre_relu_V = V
         V = custom_ReLU(V, Vout, parameter.Pout)
         # print(abc)
         # Compile Loss history
@@ -903,7 +905,7 @@ def Gradient_Descent(V, Vin, Vout, Vlb, parameter, mask, trainable=True, history
                 wandb.log(report_dict)
 
     wandb.finish()
-    return V, Loss_mean_history, Loss_std_history
+    return pre_relu_V, Loss_mean_history, Loss_std_history
 
 def get_V0(inputs, parameter, targets, lower_bounds, trainable, verbose=False):
     # Get initial vector V0 from input and target

@@ -12,29 +12,27 @@ from cobra.io import read_sbml_model
 # spc, day, tissue = 'Athaliana', 'ZT1', 'Leaf'
 # spc, day, tissue = 'Poplar', '21d', 'Root'
 
+spc, day, grpr3 = 'athaliana', 'ZT9', 'C24' #'C24' or 'TSU'
+spc, day, grpr3 = 'Sorghum', '21d', 'Leaf'
 
 ## FVA fluxes
-fluxes_file = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/FVA_results/draft_fva_results_dup_fb_fva0.8_110823.tsv"
-## FVA thylakoid fluxes
-fluxes_file = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/FVA_results/draft_fva_results_dup_fb_fva0.8_051324.tsv"
-fluxes_file = "/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/FVA_Output.tsv"
+fluxes_file = f"/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/FVA_Output_{spc}.tsv"
 
-spc, day, grpr3 = 'athaliana', 'ZT9', 'C24' #'C24' or 'TSU'
-# spc, day, grpr3 = 'Sorghum', '21d', 'Leaf'
+
 if 'atha' in spc:
     ## new thylakoid fluxes
     scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/secMetResults/{spc}_objective_abundance_Control.tsv"
     ctrl_trmt = 'Control'
-    treatments = ['Cold']
+    treatments = ['Freeze']
     value_col = 'value'
     other_colm = 'genotype'
 else:
     msr = 'tmm'
     avogadro = 6.02214076e+23
     ## Relative abundance
-    relab_scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Dec6/{spc}_relab_rxn_scores_{msr}.csv"
+    relab_scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Jul2/plastidial_model/{spc}_relab_rxn_scores_{msr}.csv"
     ## Objective abundance
-    scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Dec6/{spc}_objective_abundance_Control.csv"
+    scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Jul2/plastidial_model/{spc}_objective_abundance_Control.tsv"
     treatments = ['FeLim', 'FeEX', 'ZnLim', 'ZnEx']
     ctrl_trmt = 'Control'
     other_colm = 'tissue'
@@ -67,9 +65,9 @@ def load_fluxes(fluxes_file, all_rxn=True, verbose=False):
                                             list(fva_flux_df.filter(regex="FLEX_*|protein*|avg"))
                                         )]
 
-        fva_flux_df['mean_flux'] = np.abs(fva_flux_df[fva_flux_df.columns[1:]]).mean(axis=1)
+        fva_flux_df['mean_flux'] = np.abs(fva_flux_df[fva_flux_df.columns[1:]]).max(axis=1)
         # fva_flux_df['diffs'] = fva_flux_df['mean_flux'] - fva_flux_df['avg']
-        print(fva_flux_df.describe())
+        if verbose: print(fva_flux_df.describe())
         # print(abc)
 
         # print()
@@ -80,7 +78,7 @@ def load_fluxes(fluxes_file, all_rxn=True, verbose=False):
 
         fva_flux_df = fva_flux_df[['reaction', 'mean_flux']]
         fva_flux_df.rename(columns={'reaction':'rxn_ID'}, inplace=True)
-        print(fva_flux_df.head())
+        if verbose: print(fva_flux_df.head())
         # print(abc)
 
     else:
@@ -113,19 +111,28 @@ def load_fluxes(fluxes_file, all_rxn=True, verbose=False):
 def load_scores(ctrl_trmt= 'Control', value_col='value', verbose=False):
     sep = '\t' if '.tsv' in scores_file else ','
     scores_df = pa.read_csv(scores_file, sep = sep)
-    # relab_scores_df = pa.read_csv(relab_scores_file)
-    relab_scores_df = pa.read_csv(scores_file, sep = sep)
-    if verbose: print(scores_df.head())
+    # scores_df = pa.read_csv(relab_scores_file, sep = sep)
+    # scores_df[value_col] = scores_df[value_col].astype('float') / avogadro
 
+    if 'atha' not in spc:
+        sep = '\t' if '.tsv' in relab_scores_file else ','
+        relab_scores_df = pa.read_csv(relab_scores_file, sep = sep)
+        # Convert units using avogadro number
+        print(relab_scores_df.head())
+        relab_scores_df[value_col] = relab_scores_df[value_col].astype('float') / avogadro
+    else:
+        relab_scores_df = pa.read_csv(scores_file, sep = sep)
+
+    # relab_scores_df = pa.read_csv(scores_file, sep = sep)
+    if verbose: print(scores_df.head())
 
     if value_col not in  scores_df: scores_df[value_col] = grpr3
     if value_col not in  relab_scores_df: relab_scores_df[value_col] = grpr3
 
-    print(scores_df.head())
+    if verbose: print(scores_df.head())
     if 'Timestamp' in scores_df:
         scores_df.rename({"Timestamp": 'time_stamp', "Treatment": "treatment"}, inplace=True, axis=1)
         relab_scores_df.rename({"Timestamp": 'time_stamp', "Treatment": "treatment"}, inplace=True, axis=1)
-
 
 
     # Use score DF for K_app computation only
@@ -138,16 +145,15 @@ def load_scores(ctrl_trmt= 'Control', value_col='value', verbose=False):
     control = control.groupby('rxn_ID').mean()
     if verbose: print(control.head())
 
-    # # Convert units using avogadro number
-    # relab_scores_df[value_col] = relab_scores_df[value_col].astype('float') / avogadro
     # Keep one set of scores: other_colm, time stamp
     relab_scores_df = relab_scores_df[(relab_scores_df[other_colm] == grpr3) &
                                     (relab_scores_df['time_stamp'] == day)]
     # Keep only important columns
     relab_scores_df = relab_scores_df[[value_col, 'treatment', 'rxn_ID']]
 
-    print(relab_scores_df.head())
-    print(control.head())
+    if verbose:
+        print(relab_scores_df.head())
+        print(control.head())
     return relab_scores_df, control
 
 def generate_all_df(treatments, value_col='value', trmt_column='treatment', verbose=False):
@@ -161,34 +167,38 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
     fluxes_dup = load_fluxes(fluxes_file)
     # --> Get matching reaction ID with non-duplicated model
     fluxes_dup['rxn_ID_only'] = fluxes_dup.apply(lambda row: get_rxn_ID(row), axis=1)
-    # print(fluxes_dup)
-    # fluxes_dup.to_csv('temp_fluxes.csv')
+    print("fluxes_dup: \n", fluxes_dup.head())
+    fluxes_dup.to_csv('temp_fluxes.csv')
 
     # replace reaction ID in scores DF by the duplicated scores and suplicate entries for
     # reversible reactions keeping the same RES value for _f and _r reactions
     scr_cols = scores_df.columns
     how = 'left' # 'left' if QPSI otherwise 'right'
+    print("Before duplicating: ", scores_df.shape)
     scores_df = scores_df.merge(fluxes_dup[['rxn_ID_only', 'rxn_ID']], left_on='rxn_ID',
                                 right_on='rxn_ID_only', how=how, suffixes=('_l', ''))
-
-    # scores_df.to_csv('temp_scores_df2.csv')
+    print("After duplicating : ", scores_df.shape)
+    scores_df.to_csv('temp_scores_df2.csv')
     scores_df = scores_df[scr_cols]
-    # scores_df.to_csv('temp_scores_df3.csv')
+    scores_df.to_csv('temp_scores_df3.csv')
+
 
 
     # Compute K_app
-    print(control.head())
     if verbose:
         print("Control DF: \n", control.head())
+        print("Scores DF: \n", scores_df.head())
+        # print(abc)
+
     all_control = control.merge(fluxes_dup, left_on='rxn_ID', right_on='rxn_ID_only',
                                     how=how, suffixes=('_l', ''))
-    print("all_control: ", all_control.head())
+    if verbose: print("all_control: ", all_control.head())
 
     if verbose:
         print('Control after merging reversible reactions: ', all_control.shape)
     all_control = all_control[['rxn_ID', value_col, 'mean_flux']]
     all_control['kapp'] = np.abs(all_control['mean_flux'])/all_control[value_col]
-    print("all_control Kapp: ", all_control.head())
+    if verbose: print("all_control Kapp: ", all_control.head())
     # all_control.loc[all_control.rxn_ID=='rxn00018_d0', 'kapp'] = 1.0
 
 
@@ -209,6 +219,10 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
     scores_df['rxn_ID'] = scores_df['rxn_ID'].astype(str)
     all_control['rxn_ID'] = all_control['rxn_ID'].astype(str)
     treatments = [ctrl_trmt] + treatments
+
+    print("all_control: \n", all_control.head())
+    print("scores_df: \n", scores_df.head())
+    # print(abc)
     for trmt in treatments:
         if verbose:  print("   --> Processing: ", trmt)
         temp = scores_df[scores_df[trmt_column] == trmt][[value_col, 'rxn_ID']].copy()
@@ -221,7 +235,7 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
 
         if verbose:
             print(all_control.columns)
-            print("After mergin temp: ", all_control.shape)
+            print("After merging temp: ", all_control.shape)
             print("computing V_bf ...")
         all_control['v_'+trmt] = all_control[value_col] * all_control['kapp']
 
@@ -230,7 +244,7 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
         all_control.rename(columns={value_col:trmt+'_score'}, inplace=True)
         # print(abc)
 
-    print(all_control[all_control['rxn_ID'].isin(['rxn00018_d0'])]) #'rxn27927_d0_f', 'rxn27927_d0_r',
+    # print(all_control[all_control['rxn_ID'].isin(['rxn00018_d0'])])
 
     # plot V_bf to compare
     ls = ['v_'+x for x in treatments]
@@ -245,14 +259,14 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
     # if 'tissue' in all_control.columns:
     #     name = [spc, 'thylakoid', tissue, day, 'Vbf']
     # else:
-    name = [spc, 'thylakoid', grpr3, day, 'Vbf']
+    name = [spc, 'complexFix', grpr3, day, 'noADP', 'Vbf']
 
     if 'relab' in scores_file:
         name = name + ['relab']
 
-    all_control[ls].to_csv("/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name)+"_maxCtrl.csv", index=False)
+    all_control[ls].to_csv("/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name)+"_maxCtrl_mixedRelab.csv", index=False)
 
-    all_control.to_csv("/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name+['kapp'])+"_maxCtrl.csv", index=False)
+    all_control.to_csv("/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name+['kapp'])+"_maxCtrl_mixedRelab.csv", index=False)
     return all_control[ls]
 
 def compare_predictions():
@@ -333,8 +347,8 @@ if __name__ == '__main__':
 
     compute = True
     if compute:
-        all_control = generate_all_df(treatments, value_col='value', trmt_column='treatment')
-        print(all_control.tail(20))
+        all_control = generate_all_df(treatments, value_col='value', trmt_column='treatment', verbose=True)
+        # print(all_control.tail(20))
         print(all_control.describe())
         print(abc)
         all_control= all_control.set_index('rxn_ID')

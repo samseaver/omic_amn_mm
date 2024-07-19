@@ -34,24 +34,29 @@ seed = 10
 np.random.seed(seed=seed)  # seed for random number generator
 
 spc = 'athaliana'
-cobraname = 'athaliana_plastidial_thylakoid_052324_duplicated'
+cobraname = 'Athaliana_Thylakoid_Reconstruction_ComplexFix_070224_duplicated'
+mediumname = 'plant_autotrophic_media_restricted'
+
+spc = 'Sorghum'
+cobraname = 'sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP_duplicated'
 # cobraname = 'sbicolor_plastidial_model_duplicated'
-mediumname = 'plastidial_model_duplicated_restricted_media_noATP'
+mediumname = 'plastidial_model_duplicated_restricted_media_noATP_noADP'
 
 
 if 'atha' in spc:
     time_stamp = 'ZT9'
-    other_colm = 'TSU' # 'TSU', 'C24'
-    treatments = ['Control', 'Cold']
+    other_colm = 'C24' # 'TSU', 'C24'
+    treatments = ['Control', 'Freeze']
     # athaliana_thylakoid_C24_ZT9_Vbf_maxCtrl
-    Vbfname = f"athaliana_thylakoid_{other_colm}_{time_stamp}_Vbf_maxCtrl.csv"
+    Vbfname = f"athaliana_complexFix_{other_colm}_{time_stamp}_Vbf_maxCtrl.csv"
 else:
-    time_stamp = '21d'
+    time_stamp = '07d'
     other_colm = 'Leaf'
     treatments = ['Control', 'FeLim', 'FeEX', 'ZnLim', 'ZnEx']
-    Vbfname = f"Sorghum_{time_stamp}_Vbf_noOrganellar_maxCtrl.csv"
-    Vbfname = f"Sorghum_thylakoid_{other_colm}_{time_stamp}_noOrganellar_Vbf_maxCtrl.csv"
-
+    # Sorghum_thylakoid_Leaf_21d_Vbf_maxCtrl
+    # Vbfname = f"Sorghum_{time_stamp}_Vbf_noOrganellar_maxCtrl.csv"
+    # Vbfname = f"Sorghum_thylakoid_{other_colm}_{time_stamp}_Vbf_maxCtrl.csv"
+    Vbfname = f"Sorghum_complexFix_{other_colm}_{time_stamp}_noADP_Vbf_maxCtrl_mixedRelab.csv"
 
 mediumbound = 'UB' # Exact bound (EB) or upper bound (UB)
 method = 'Vbf' #'FBA' # FBA, pFBA or EXP, Vbf, Vbf_Wt
@@ -80,7 +85,7 @@ parameter.get(sample_size=size, treatments=treatments, verbose=verbose)
 
 # np.savetxt("Result/AfterGetTempPout.tsv", parameter.Pout, delimiter='\t')
 # Saving file
-trainingfile  = DIRECTORY+'Dataset_model/'+mediumname+'_'+parameter.mediumbound+'_'+str(size)+'_'+spc+'_'+other_colm+'_'+time_stamp+'_thylakoid'
+trainingfile  = DIRECTORY+'Dataset_model/'+mediumname+'_'+parameter.mediumbound+'_'+str(size)+'_'+spc+'_'+other_colm+'_'+time_stamp+'_complexFix'
 parameter.save(trainingfile, reduce=reduce, verbose=verbose)
 # np.savetxt("Result/AfterSaveTempPout.tsv", parameter.Pout, delimiter='\t')
 # Verifying

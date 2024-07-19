@@ -44,6 +44,8 @@ def get_matrices_vbf(model, medium, vbf, measure, reactions):
 
     # m = metabolite, n = reaction/v/flux, p = medium
     S = np.asarray(cobra.util.array.create_stoichiometric_matrix(model))
+    cobra.util.array.create_stoichiometric_matrix(model, array_type = "DataFrame").to_csv("s_matrix.csv")
+    print(abc)
     n, m, n_in, n_out = S.shape[1], S.shape[0], len(medium), len(measure)
 
     # Get V2M and M2V from S
@@ -165,6 +167,8 @@ def get_matrices(model, medium, measure, reactions):
 
     # m = metabolite, n = reaction/v/flux, p = medium
     S = np.asarray(cobra.util.array.create_stoichiometric_matrix(model))
+    cobra.util.array.create_stoichiometric_matrix(model, array_type = "DataFrame").to_csv("s_matrix.csv")
+
     n, m, n_in, n_out = S.shape[1], S.shape[0], len(medium), len(measure)
 
     # Get V2M and M2V from S
@@ -215,6 +219,7 @@ def get_matrices_original(model, medium, measure, reactions):
 
     # m = metabolite, n = reaction/v/flux, p = medium
     S = np.asarray(cobra.util.array.create_stoichiometric_matrix(model))
+    cobra.util.array.create_stoichiometric_matrix(model, array_type = "DataFrame").to_csv("s_matrix.csv")
     n, m, n_in, n_out = S.shape[1], S.shape[0], len(medium), len(measure)
 
     # Get V2M and M2V from S
@@ -787,7 +792,7 @@ class TrainingSet:
         self.Vbfname = Vbfname
         self.model = cobra.io.read_sbml_model(cobraname+'.xml')
         ## remove --------------------
-        self.model.reactions.get_by_id("bio1_biomass").lower_bound = 1
+        # self.model.reactions.get_by_id("bio1_biomass").lower_bound = 1
         #### -------------------------
 
         self.reduce = False

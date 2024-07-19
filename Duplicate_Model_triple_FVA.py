@@ -8,11 +8,17 @@ from cobra.flux_analysis import flux_variability_analysis as fva
 
 from cobrakbase.core.kbase_object_factory import KBaseObjectFactory
 KBOF = KBaseObjectFactory()
-model_path = "Dataset_input/athaliana_plastidial_thylakoid_052324.json"
+
+model_path = "Dataset_input/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_061124.json"
+model_path = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/plastidial_models/ortho_jun20_models/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP.json"
 media_path = "Dataset_input/PlantPlastidialAutotrophicMedia_noATP.json"
+
+# model_path = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/fullmodels_media/ortho_jun20_models/Athaliana_Thylakoid_Reconstruction_ComplexFix_070224.json"
+# media_path = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/fullmodels_media/PlantAutotrophicMedia.json"
+
+
 model = KBOF.build_object_from_file(model_path, "KBaseFBA.FBAModel")
 co_media = KBOF.build_object_from_file(media_path, "KBaseBiochem.Media")
-
 model.medium = co_media
 
 # In this case the local root of the repo is our working directory
@@ -35,7 +41,11 @@ print(model.medium)
 print(model.objective)
 solution = model.optimize()
 print(solution)
+
+from cobra.io import write_sbml_model
+write_sbml_model(model, model_path.replace('json', 'xml'))
 # print(abc)
+
 # %% markdown
 # ## Checking the objective of the model
 # Optional step for exploring how the biomass is encoded. In some models, several biomass reactions are available and one has to make sure using the right one.
@@ -122,7 +132,7 @@ new_name = new_name.replace('json', 'xml')
 
 ## restrict media
 # remove_med = ["EX_cpd00067_e0_i", "EX_cpd00007_e0_i", "EX_cpd00009_e0_i", "EX_cpd00008_e0_i", "EX_cpd00013_e0_o", "EX_cpd00048_e0_o", "EX_cpd11632_e0_o", "EX_cpd00011_e0_o", "EX_cpd00001_e0_o", "EX_cpd00002_e0_o"]
-remove_med = ["EX_cpd00067_e0_i", "EX_cpd00007_e0_i", "EX_cpd00008_e0_i", "EX_cpd11632_e0_o", "EX_cpd00011_e0_o", "EX_cpd00001_e0_o", "EX_cpd00002_e0_o", 'EX_cpd00005_e0_o', 'EX_cpd00006_e0_i']
+remove_med = ["EX_cpd00067_e0_i", "EX_cpd00007_e0_i", "EX_cpd00008_e0_i", "EX_cpd00008_e0_o", "EX_cpd11632_e0_o", "EX_cpd00011_e0_o", "EX_cpd00001_e0_o", "EX_cpd00002_e0_o", 'EX_cpd00005_e0_o', 'EX_cpd00006_e0_i']
 # EX_cpd00009_e0_i
 solution = dup_co_model.optimize()
 print(solution)
@@ -145,13 +155,13 @@ print("Duplicated model's location: " + new_name)
 
 # print(abc)
 print("Running triple FVA ...")
-dup_co_model.reactions.get_by_id("bio1").lower_bound=0.5
+dup_co_model.reactions.get_by_id("bio1_biomass").lower_bound=0.5
 fva_rxns_explore = list(dup_co_model.reactions)
 
 flux_dict = dict()
 fva_dict = dict()
 for reaction in dup_co_model.reactions:
-	if(reaction.id=='bio1'):
+	if('bio1' in reaction.id):
 		continue
 
 	reaction.objective_coefficient=1.0
@@ -170,7 +180,7 @@ for reaction in dup_co_model.reactions:
 ofh = open('Dataset_input/FVA_Output.tsv','w')
 ofh.write("\t".join(["reaction"]+list(fva_dict.keys())+["avg"])+'\n')
 for reaction in dup_co_model.reactions:
-	if(reaction.id == 'bio1' or reaction.id == 'protein_flex'):
+	if('bio1' in reaction.id or reaction.id == 'protein_flex'):
 		continue
 
 	max_sum=0.0

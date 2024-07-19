@@ -42,6 +42,7 @@ model_path = "Dataset_input/sbicolor_plastidial_model.xml"
 model_path = "Dataset_input/Plastid_Sandbox_model.xml"
 model_path = "Dataset_input/athaliana_plastidial_thylakoid_051024.xml"
 model_path = "Dataset_input/athaliana_plastidial_thylakoid_052324.xml"
+model_path = "Dataset_input/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_061124.xml"
 # model_path = "Dataset_input/sbicolor_plastidial_model_noOrganellar.xml"
 # model_path = "/Users/sea/Projects/QPSI_project/QPSI_Modeling/data/metabolic_models/plastidial_models/ortho_nov29_models/sbicolor_plastidial_model.xml"
 model = cobra.io.read_sbml_model(model_path)
