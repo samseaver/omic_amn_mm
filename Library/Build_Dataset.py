@@ -604,6 +604,7 @@ def create_fiexd_medium_vbf(model, medium, valmed, verbose=False):
     for ind in range(len(medium)):
         INFLUX[medium[ind]] = valmed[ind]
 
+    print("INFLUX: ", len(INFLUX))
     return INFLUX
 
 def getBioFluxes(model, Pout, medium, valmed, bioFluxes, treatment, augmntXY=False, inf={}):
@@ -882,8 +883,9 @@ class TrainingSet:
                          self.model.reactions)
         self.S_int, self.S_ext, self.Q, self.P, \
         self.b_int, self.b_ext, self.Sb, self.c = \
-        get_matrices_LP(self.model, self.mediumbound, self.X, self.S,
-                             self.Pin, self.medium, self.objective)
+        [], [], [], [], [], [], [], []
+        # get_matrices_LP(self.model, self.mediumbound, self.X, self.S,
+                             # self.Pin, self.medium, self.objective)
         # save cobra file
         cobra.io.write_sbml_model(self.model, filename+'.xml')
         # save parameters
@@ -1082,12 +1084,15 @@ class TrainingSet:
                 X[i], Y[i], LB[i], self.Pout = \
                 getBioFluxes(self.model, self.Pout, self.medium, self.valmed,
                                     self.Vbf_df, trmt, augmntXY=augmntXY)
+                print("iteration ", i, " Y shape ", Y[i].shape)
 
         # Y[len(treatments)]=rxns
         X = np.asarray(list(X.values()))
         Y = np.asarray(list(Y.values()))
         LB = np.asarray(list(LB.values()))
         rxns = [r.id for r in self.model.reactions]
+        print(len(self.model.reactions))
+        print(Y.shape)
         temp_df = pandas.DataFrame(data=Y, columns=rxns)
         print(temp_df.head())
         temp_df.to_csv("Result/temp_Y.csv")

@@ -1,20 +1,36 @@
 import pandas as pa
 import os
 import numpy as np
+import json
 
 import plotly.express as px
+import seaborn as sns
 import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
 import plotly.io as pio
 import seaborn as sns
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
+pio.templates.default = "plotly_white" #"none"
 
 
+from plotly.subplots import make_subplots
 from Calculate_Carbon_Flux import Calculate_Carbon_Flux
 from cobra.io import read_sbml_model
 
+
+from dash import Dash, dcc, html, Input, Output
+import dash_cytoscape as cyto
+
 avogadro = 6.02214076e+23
+spc = 'Sorghum'
+genotype = 'Leaf'
+time_stamp = '21d'
+sv = 'sv15/'
+model_path = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/data/metabolic_models/plastidial_models/ortho_jun20_models/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP_duplicated_noP.xml"
+
+ccf_obj = Calculate_Carbon_Flux()
+
 
 def set_boundaries(co_model, vbf_df, colm_name='Vbf'):
     found = 0
@@ -136,13 +152,12 @@ def per_Reaction_diffs(df, clmns):
     return diffs # for combine portion of split-apply-combine
 
 def calculate_c_flux(flux_df, co_model):
-    ccf_obj = Calculate_Carbon_Flux()
-
     ## Compute metabolite fluxes
-    ccf_obj.metabolites_balance(flux_df, co_model)
+    # ccf_obj.metabolites_balance(flux_df, co_model)
 
     ## Compute carbon flux
     ccf_obj.med_bio_flux(flux_df, co_model)
+    # print(abc)
     # ccf_obj.model_rxns_flux(flux_df, co_model)
 
 def plot_hist_diffs(diff_df, msrs, treatments, spc, tissue, time_stamp):
@@ -235,17 +250,19 @@ def generate_CDFs(data, treatments, time_stamp, variables=[]):
 
 
     if 'RES_relab' in data: variables = variables+['RES_relab']
-    variables = ['Pred']
+    variables = ['Pred', 'Vbf', 'RES']
     for var in variables:
         print(f"---*--- processing {var} ---*---")
         plt.title(f'{var} CDF for Sorghum - {time_stamp}')
         trmt_data = data[['rxn_ID', 'treatment', var]]
+
         ind = ['rxn_ID']
         col = ['treatment']
         val = [var]
         trmt_data = trmt_data.pivot(index=ind, columns=col, values=val)
         trmt_data.columns = trmt_data.columns.map('{0[0]}_{0[1]}'.format)
         trmt_data = trmt_data.reset_index()
+        # print(trmt_data.head(10))
 
         for trmt in treatments:
             var_data = trmt_data[var+'_'+trmt].dropna()
@@ -262,9 +279,9 @@ def generate_CDFs(data, treatments, time_stamp, variables=[]):
 
         plt.legend()
         if var in ['Pred', 'FBA', 'Vbf', 'RES']:
-            fname = f"/Users/sea/Projects/AMN/omic_amn_mm/Result/{var}_CDF_Sorghum_{time_stamp}"
+            fname = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Result/pred_fluxes_figures/{sv}{var}_CDF_{spc}_{time_stamp}"
             plt.savefig(fname, dpi=800)#, bbox_inches='tight', dpi=400)
-        plt.show()
+        # plt.show()
 
 
     return True
@@ -396,46 +413,35 @@ def generate_radarPlot(sig_reactions, wide_pred_df):
     'rxn19253_d0_r', 'rxn27497_d0', 'rxn27497_d0_f', 'rxn27497_d0_r', 'rxn29919_d0',
     'rxn29919_d0_f', 'rxn29919_d0_r']
 
-    reactions = ['rxn00069_d0' 'rxn00102_d0' 'rxn00121_d0' 'rxn00148_d0' 'rxn00151_d0'
-                 'rxn00154_c0' 'rxn00154_d0' 'rxn00161_d0' 'rxn00175_d0' 'rxn00179_d0'
-                 'rxn00187_d0' 'rxn00191_d0' 'rxn00192_d0' 'rxn00211_d0' 'rxn00248_d0'
-                 'rxn00257_c0' 'rxn00260_d0' 'rxn00272_d0' 'rxn00275_d0' 'rxn00300_d0'
-                 'rxn00330_c0' 'rxn00333_d0' 'rxn00337_d0' 'rxn00361_d0' 'rxn00416_d0'
-                 'rxn00493_d0' 'rxn00495_c0' 'rxn00499_c0' 'rxn00527_d0' 'rxn00533_d0'
-                 'rxn00720_d0' 'rxn00737_d0' 'rxn00770_d0' 'rxn00781_d0' 'rxn00790_d0'
-                 'rxn00830_d0' 'rxn00899_d0' 'rxn00947_d0' 'rxn00974_d0' 'rxn01000_d0'
-                 'rxn01007_d0' 'rxn01069_d0' 'rxn01101_d0' 'rxn01102_d0' 'rxn01111_d0'
-                 'rxn01200_d0' 'rxn01207_d0' 'rxn01257_d0' 'rxn01258_d0' 'rxn01332_d0'
-                 'rxn01334_d0' 'rxn01476_d0' 'rxn01643_d0' 'rxn01827_d0' 'rxn01975_d0'
-                 'rxn02303_d0' 'rxn02373_d0' 'rxn02507_d0' 'rxn02895_d0' 'rxn03084_d0'
-                 'rxn03891_d0' 'rxn03892_d0' 'rxn03909_d0' 'rxn03983_d0' 'rxn04954_c0'
-                 'rxn05040_d0' 'rxn05287_d0' 'rxn05324_d0' 'rxn05325_d0' 'rxn05326_d0'
-                 'rxn05337_d0' 'rxn05338_d0' 'rxn05340_d0' 'rxn05342_d0' 'rxn05343_d0'
-                 'rxn05345_d0' 'rxn05346_d0' 'rxn05348_d0' 'rxn05350_d0' 'rxn05736_d0'
-                 'rxn07579_d0' 'rxn08392_d0' 'rxn08436_d0' 'rxn09444_d0' 'rxn09449_d0'
-                 'rxn09453_d0' 'rxn11700_d0' 'rxn12282_d0' 'rxn13975_d0' 'rxn13995_d0'
-                 'rxn14004_d0' 'rxn14012_d0' 'rxn14059_d0' 'rxn14102_d0' 'rxn14156_d0'
-                 'rxn14183_d0' 'rxn14205_d0' 'rxn14248_d0' 'rxn14278_d0' 'rxn14308_d0'
-                 'rxn14347_d0' 'rxn15069_d0' 'rxn15116_d0' 'rxn15271_d0' 'rxn15280_d0'
-                 'rxn15435_d0' 'rxn15493_d0' 'rxn16426_d0' 'rxn16427_d0' 'rxn16428_d0'
-                 'rxn17469_d0' 'rxn17744_d0' 'rxn17803_d0' 'rxn19071_d0' 'rxn19240_d0'
-                 'rxn19241_d0' 'rxn19242_d0' 'rxn19246_d0' 'rxn19253_d0' 'rxn19343_d0'
-                 'rxn19345_d0' 'rxn19828_d0' 'rxn19846_d0' 'rxn20632_y0' 'rxn24310_d0'
-                 'rxn24330_d0' 'rxn25637_d0' 'rxn25641_d0' 'rxn25647_d0' 'rxn25649_d0'
-                 'rxn25661_d0' 'rxn25716_d0' 'rxn25718_d0' 'rxn25743_d0' 'rxn25747_d0'
-                 'rxn25750_d0' 'rxn25762_d0' 'rxn27029_d0' 'rxn27030_d0' 'rxn27069_d0'
-                 'rxn27070_d0' 'rxn27071_d0' 'rxn27072_d0' 'rxn27073_d0' 'rxn27266_d0'
-                 'rxn27497_d0' 'rxn27927_d0' 'rxn28487_d0' 'rxn31768_d0' 'rxn37324_d0'
-                 'rxn37610_d0' 'rxn37651_d0' 'rxn37767_d0' 'rxn37768_d0' 'rxn44318_d0']
+    reactions = ['EX_cpd00007_e0_o', 'EX_cpd00009_e0_o', 'EX_cpd00011_e0_i',
+                 'EX_cpd00013_e0_i', 'EX_cpd00067_e0_o', 'EX_cpd11632_e0_i', 'rxn00069_d0_f',
+                 'rxn00097_d0_r', 'rxn00102_d0_r', 'rxn00121_d0', 'rxn00122_d0',
+                 'rxn00161_d0_r', 'rxn00187_d0', 'rxn00248_d0_f', 'rxn00249_d0_f',
+                 'rxn00257_c0_f', 'rxn00330_c0', 'rxn00337_d0_f', 'rxn00391_d0_f',
+                 'rxn00392_d0_f', 'rxn00533_d0', 'rxn00747_d0_f', 'rxn00781_d0_r',
+                 'rxn00782_d0_r', 'rxn00799_c0_f', 'rxn01100_d0_f', 'rxn01362_c0_r',
+                 'rxn01975_d0_r', 'rxn02938_d0_r', 'rxn05319_d0_i', 'rxn05467_c0_i',
+                 'rxn05467_d0_i', 'rxn05468_c0_o', 'rxn05468_d0_o', 'rxn08173_y0',
+                 'rxn08217_c0_o', 'rxn08730_c0_o', 'rxn08730_d0_o', 'rxn09121_c0_o',
+                 'rxn09736_c0_i', 'rxn09736_d0_i', 'rxn09839_d0_o', 'rxn10929_d0_i',
+                 'rxn10967_d0_i', 'rxn13365_d0_i', 'rxn15298_d0_f', 'rxn15493_d0_f',
+                 'rxn15494_d0_f', 'rxn19828_d0_r', 'rxn24508_d0_r', 'rxn26754_d0',
+                 'rxn29240_d0_f', 'rxn29733_d0_i', 'rxn31154_d0_i', 'EX_cpd00001_e0_i',
+                 'rxn05319_c0_i', 'rxn05465_d0_f', 'rxn15280_d0_f', 'rxn26477_d0_r',
+                 'rxn00770_d0_r', 'rxn00777_d0_f', 'rxn00974_d0_r', 'rxn02380_d0_f',
+                 'rxn11700_d0_f', 'rxn17196_d0', 'rxn_cpd00103_c0_i', 'rxn00001_d0_f',
+                 'rxn00799_c0_r', 'rxn00899_d0_r', 'rxn01207_d0_r', 'rxn08766_d0_f',
+                 'rxn11013_d0_o', 'rxn17744_d0_r', 'rxn17803_d0_r']
 
-    dup_rxns = []
-    for rxn in reactions:
-        dup_rxns += [rxn, rxn+"_f", rxn+"_r"]
-    reactions = dup_rxns
+    # dup_rxns = []
+    # for rxn in reactions:
+    #     dup_rxns += [rxn, rxn+"_f", rxn+"_r"]
+    # reactions = dup_rxns
 
     sig_df = pa.read_csv(sig_reactions, sep='\t')
     print(sig_df.shape)
     sig_df = sig_df[(sig_df['day']==time_stamp) & (sig_df['class'].isin(['Central Carbon', 'Amino acids']))]
+    print(sig_df.columns)
     sig_df = sig_df[['rxn_ID', 'role']]
     print(sig_df.shape)
     sig_df_dup = pa.DataFrame()
@@ -448,16 +454,20 @@ def generate_radarPlot(sig_reactions, wide_pred_df):
     sig_df = sig_df_dup
     print(sig_df.shape)
 
-    # sig_df = sig_df[sig_df['rxn_ID'].isin(reactions)]
+    sig_df = sig_df[sig_df['rxn_ID'].isin(reactions)]
     sig_df = sig_df.drop_duplicates()
-    print(sig_df.head())
+    print("sig_df \n", sig_df.head())
     print(sig_df.shape)
     noin = ['Histidinol-phosphate aminotransferase (EC 2.6.1.9)', 'Tyrosine aminotransferase (EC 2.6.1.5)', 'Gamma-glutamyl phosphate reductase (EC 1.2.1.41)']
     sig_df = sig_df[~(sig_df['role'].isin(noin))]
     # sig_df = sig_df.groupby('rxn_ID').agg({'role': lambda x: ', '.join(str(x))}).reset_index()
     print(sig_df.shape)
+
+    print("before filter", wide_pred_df.shape)
+    print("before filter", wide_pred_df.head())
+    print("there are ", len(reactions))
+    print(set(wide_pred_df['rxn_ID'].unique()).intersection(set(reactions)))
     # print(abc)
-    print("beefore filter", wide_pred_df.shape)
     reactions = list(sig_df['rxn_ID'].unique())
     wide_pred_df = wide_pred_df[wide_pred_df['rxn_ID'].isin(reactions)]
     print("after filter", wide_pred_df.shape)
@@ -472,9 +482,24 @@ def generate_radarPlot(sig_reactions, wide_pred_df):
 
     wide_pred_df = wide_pred_df.sort_values(by=['Pred_Control'])
 
-    colmn =  'role' #'role'
+    # colmn =  'role' #'role'
+    wide_pred_df['role'] = wide_pred_df['role'].astype('str')
+    wide_pred_df['rxn_ID'] = wide_pred_df['rxn_ID'].astype('str')
+    wide_pred_df['role_rxn'] = wide_pred_df['role'] + "_" + wide_pred_df['rxn_ID']
+    colmn = 'role_rxn'
+    # colmn = 'role'
     clms = []
     cmn_role = []
+    # $turquoise: 'rgba(85, 214, 190, 1)';
+    # $glaucous: 'rgba(96, 113, 150, 1)';
+    # $jasper: 'rgba(205, 83, 52, 1)';
+    # $citron: 'rgba(225, 206, 122, 1)';
+    # $orchid-pink: 'rgba(212, 175, 185, 1)';
+    # color_map = {'Control': 'rgba(85, 214, 190, 1)', 'FeLim': 'rgba(96, 113, 150, 1)', 'FeEX': 'rgba(205, 83, 52, 1)', 'ZnLim': 'rgba(225, 206, 122, 1)', 'ZnEx': 'rgba(212, 175, 185, 1)'}
+    color_map = {'Control': 'rgba(56, 29, 42, 1)', 'FeEX': 'rgba(62, 105, 144, 1)', 'FeLim': 'rgba(170, 189, 140, 1)', 'ZnEx': 'rgba(206, 83, 116, 1)', 'ZnLim': 'rgba(243, 155, 109, 1)'}
+    color_map = {'Control': 'rgba(171, 146, 191, 1)', 'FeEX': 'rgba(29, 138, 153, 1)', 'FeLim': 'rgba(252, 208, 161, 1)', 'ZnEx': 'rgba(149, 155, 177, 1)', 'ZnLim': 'rgba(93, 211, 158, 1)'}
+    # rgba(184, 142, 143, 1)
+    # 'rgba(93, 211, 158, 1)'
     for trmt in treatments:
         df = pa.DataFrame()
         for tmt in [trmt, 'Control']:
@@ -482,7 +507,7 @@ def generate_radarPlot(sig_reactions, wide_pred_df):
             df1.rename(columns={'Pred_'+tmt: 'Pred'}, inplace=True)
             df1 = df1[df1['Pred'] > 0]
             df1['trmt'] = tmt
-            df1['Pred'] = np.log(df1['Pred'])
+            # df1['Pred'] = np.log(df1['Pred'])
             df1 = df1.sort_values(by=['Pred'])
 
             if not cmn_role:
@@ -496,18 +521,18 @@ def generate_radarPlot(sig_reactions, wide_pred_df):
         df = df.sort_values(by=[colmn])
         # df = df.sort_values(by=['Pred', 'trmt'])
         title = f'Significant reactions for {spc} {genotype} - {time_stamp} {trmt}'
-        fig = px.line_polar(df, r='Pred', color='trmt', theta=colmn, line_close=True,
-                            labels={'trmt': ''}, title=title)
-        fig.update_traces(fill='toself')
+        fig = px.bar(df, y='Pred', color='trmt', x=colmn, color_discrete_map=color_map,
+                            labels={'trmt': ''}, title=title, barmode="group")
+        # fig.update_traces(fill='toself')
         fig.update_layout(
             font=dict(
                 family="Arial",
-                size=16
+                size=12
             )
         )
-        fname = f"/Users/sea/Projects/AMN/omic_amn_mm/Result/sig_rxn_radar_{spc}_{genotype}_{time_stamp}_{trmt}.png"
-        pio.write_image(fig, fname, scale=6, width=1000, height=1000)
-        fig.show()
+        # fname = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Result/pred_fluxes_figures/sig_rxn_radar_{spc}_{genotype}_{time_stamp}_{trmt}.png"
+        # pio.write_image(fig, fname, scale=6, width=1000, height=1000)
+        # fig.show()
     # print(abc)
     cmn_role = []
     df = pa.DataFrame()
@@ -516,7 +541,7 @@ def generate_radarPlot(sig_reactions, wide_pred_df):
         df1.rename(columns={'Pred_'+trmt: 'Pred'}, inplace=True)
         df1 = df1[df1['Pred'] > 0]
         df1['trmt'] = trmt
-        df1['Pred'] = np.log(df1['Pred'])
+        # df1['Pred'] = np.log(df1['Pred'])
         df1 = df1.sort_values(by=['Pred'])
 
         if not cmn_role:
@@ -530,32 +555,38 @@ def generate_radarPlot(sig_reactions, wide_pred_df):
     df = df.sort_values(by=[colmn])
     # df = df.sort_values(by=['Pred', 'trmt'])
     title = f'Significant reactions for {spc} {genotype} - {time_stamp}'
-    fig = px.line_polar(df, r='Pred', color='trmt', theta=colmn, line_close=True,
-                        labels={'trmt': ''}, title=title)
-    fig.update_traces(fill='toself')
+    # fig = px.line_polar(df, r='Pred', color='trmt', theta=colmn, line_close=True,
+    #                     labels={'trmt': ''}, title=title)
+    # fig = px.line_polar(df, r='Pred', color='trmt', theta=colmn, line_close=True,
+    #                     labels={'trmt': ''}, title=title)
+    # fig.update_traces(fill='toself')
+
+    fig = px.bar(df, y='Pred', color='trmt', x=colmn,
+                        labels={'trmt': ''}, title=title, barmode="group", color_discrete_map=color_map)
     fig.update_layout(
         font=dict(
             family="Arial",
-            size=16
+            size=12
         )
     )
-    fname = f"/Users/sea/Projects/AMN/omic_amn_mm/Result/sig_rxn_radar_{spc}_{genotype}_{time_stamp}_all.png"
+    fname = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Result/pred_fluxes_figures/sig_rxn_radar_{spc}_{genotype}_{time_stamp}_all.png"
     pio.write_image(fig, fname, scale=6, width=1000, height=1000)
     fig.show()
+
+
 
 if __name__ == '__main__':
     calculate_C = True
     relab = False
 
     treatments = ["Control", "FeLim", "FeEX", "ZnLim", "ZnEx"]
+    treatments = ["Control", "FeEX", "FeLim", "ZnEx", "ZnLim"]
     msrs = ['Pred', 'FBA', 'Vbf', 'RES']
     control_id = "Control"
 
-    spc = 'Sorghum'
+    
     projCols = ['tissue', 'treatment', 'time_stamp']
     tissue = 'Leaf'
-    genotype = 'Leaf'
-    time_stamp = '21d'
 
     # treatments = ["control", "cold"]
     # projCols = ['Treatment', 'Timestamp']
@@ -564,26 +595,24 @@ if __name__ == '__main__':
     # tissue = ''
     # genotype = 'C24'
 
-    model_path = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/plastidial_models/ortho_jun20_models/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP_duplicated.xml"
-
-    more = "_noBioLimit_noADP"
+    more = "_noADP_noP"
     # more = "_noBioLimit_newError"
     # more = "_decay5" # SV_penalty = 10
     # more = "_dr5_lr5" # SV_penalty = 10
     # more = "_noBioLimit" # SV_penalty = 10
-    prediction_file = f"/Users/sea/Projects/AMN/omic_amn_mm/Result/{spc}_{genotype}_{time_stamp}_complexFix{more}_V_rxn.tsv"
+    prediction_file = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Result/{sv}{spc}_{genotype}_{time_stamp}_complexFix{more}_V_rxn.tsv"
 
-    # kapp_vbf_path = f"/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/{spc}_complexFix_{genotype}_{time_stamp}_Vbf_kapp_maxCtrl_mixRelab.csv"
-    kapp_vbf_path = f"/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/{spc}_complexFix_{genotype}_{time_stamp}_Vbf_kapp_maxCtrl_mixedRelab_noADP.csv"
+    # kapp_vbf_path = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Dataset_input/{spc}_complexFix_{genotype}_{time_stamp}_Vbf_kapp_maxCtrl_mixRelab.csv"
+    kapp_vbf_path = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Dataset_input/{spc}_complexFix_{genotype}_{time_stamp}_noADP_Vbf_kapp_maxCtrl_mixedRelab.csv"
     # Sorghum_complexFix_Leaf_21d_Vbf_kapp_maxCtrl_mixedRelab_noADP
 
-    scores_path = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Jul2/plastidial_model/{spc}_objective_abundance_Control.tsv"
-    # scores_path = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/secMetResults/athaliana_objective_abundance_control_{genotype}.tsv"
+    scores_path = f"/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/integration_results/reaction_scores_binding_Jul2/plastidial_model/{spc}_objective_abundance_Control.tsv"
+    # scores_path = f"/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/integration_results/secMetResults/athaliana_objective_abundance_control_{genotype}.tsv"
 
-    sig_reactions = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/src/util/sig_reactions_{genotype}.tsv"
+    sig_reactions = f"/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/src/util/sig_reactions_{spc.lower()}_{genotype.lower()}.tsv"
 
-    s_matrix_path = f"/Users/sea/Projects/AMN/omic_amn_mm/s_matrix_plastid_T.csv"
-
+    s_matrix_path = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Result/s_matrix/s_matrix_plastid_noP_T_new.csv"
+    saveTo = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Result/{sv}"
     # if os.path.exists(prediction_file.replace(".tsv", "_fba_Vbf_RES.csv")) and False:
     #     pred_df = pa.read_csv(prediction_file.replace(".tsv", "_fba_Vbf_RES.csv"))
     #     ## Generate plots: histograms and line plots
@@ -614,22 +643,117 @@ if __name__ == '__main__':
     # print(abc)
 
     print('------- Processing S matrix')
-    s_matrix_df = pa.read_csv(s_matrix_path)
-    s_matrix_df.rename(columns={'Unnamed: 0': 'rxn_ID'}, inplace=True)
-    s_matrix_df = s_matrix_df.set_index('rxn_ID')
-    s_matrix_df.sort_index(inplace=True)
-    for trmt in treatments:
-        trmt_pred = pred_df[['rxn_ID', trmt]]
-        trmt_pred = trmt_pred.set_index('rxn_ID')
-        trmt_pred.sort_index(inplace=True)
+    sMatrix = False
+    if sMatrix:
+        co_model = read_sbml_model(model_path)
+        met_c_dict = ccf_obj.metabolite_molecule(co_model, 'C')
 
-        trmt_matrix = s_matrix_df.apply(lambda x : np.asarray(x) * np.asarray(trmt_pred[trmt]))
-        trmt_matrix = trmt_matrix.fillna(0)
+        color_map = {'Control': 'rgba(64, 61, 88, 1)', 'FeEX': 'rgba(0, 175, 181, 1)', 'FeLim': 'rgba(170, 189, 140, 1)',
+        'ZnEx': 'rgba(206, 83, 116, 1)', 'ZnLim': 'rgba(243, 155, 109, 1)'}
+        color_map_sns = {'Control': (64/255, 61/255, 88/255, 1), 
+                        'FeEX': (0/255, 175/255, 181/255, 1), 
+                        'FeLim': (170/255, 189/255, 140/255, 1),
+                        'ZnEx': (206/255, 83/255, 116/255, 1), 
+                        'ZnLim': (243/255, 155/255, 109/255, 1)}
 
-        trmt_matrix.to_csv(f"{trmt}_s_matrix.tsv", sep='\t')
-        trmt_matrix = trmt_matrix[['cpd00810_c0', 'cpd00070_d0', 'cpd00242_d0', 'cpd00247_c0', 'cpd00103_c0', 'cpd00011_d0']]
-        trmt_matrix = trmt_matrix[(np.abs(trmt_matrix['cpd00810_c0'])>0) | (np.abs(trmt_matrix['cpd00070_d0'])>0) | (np.abs(trmt_matrix['cpd00242_d0'])>0)]
-        trmt_matrix.to_csv(f"{trmt}_s_matrix_subset.tsv", sep='\t')
+        fig = make_subplots(rows=1, cols=len(treatments),
+                        # specs=specs, 
+                        # subplot_titles=titles, 
+                        # shared_xaxes=True,
+                        shared_yaxes=True,
+                        vertical_spacing=0.02,
+                        horizontal_spacing=0.02,)
+        s_matrix_df = pa.read_csv(s_matrix_path)
+        s_matrix_df.rename(columns={'Unnamed: 0': 'rxn_ID'}, inplace=True)
+        s_matrix_df = s_matrix_df.set_index('rxn_ID')
+        s_matrix_df.sort_index(inplace=True)
+        col = 0
+        # Set the seaborn style for better aesthetics
+        sns.set(style="whitegrid")
+
+        # Create the plot
+        plt.figure(figsize=(10, 6))
+
+        for trmt in treatments:
+            print(trmt, "-*-"*20)
+            col += 1
+            trmt_pred = pred_df[['rxn_ID', trmt]]
+            trmt_pred = trmt_pred.set_index('rxn_ID')
+            trmt_pred.sort_index(inplace=True)
+            # print(s_matrix_df.head())
+            # print(abc)
+
+            trmt_matrix = s_matrix_df.apply(lambda x : np.asarray(x) * np.asarray(trmt_pred[trmt]))
+            trmt_matrix = trmt_matrix.fillna(0)
+            
+
+
+            # trmt_matrix = trmt_matrix.set_index('rxn_ID').transpose()
+            # trmt_matrix = trmt_matrix.reset_index()
+            # trmt_matrix.rename(columns={'index': 'rxn_ID'}, inplace=True)
+            # print(trmt_matrix.head())
+            
+
+            # Transpose the DataFrame
+            trmt_matrix = trmt_matrix.T
+            trmt_matrix['sum'] = trmt_matrix.sum(axis=1)
+            trmt_matrix['sum_c'] = trmt_matrix.index.map(met_c_dict) * trmt_matrix['sum']
+            
+
+            print(trmt, np.abs(trmt_matrix['sum']).describe(percentiles = [.5, .6, .73, .75, .78, .8, .83, .86, .95, .96, .97, .98, .99]))
+
+            trmt_matrix.to_csv(f"{saveTo}{spc}_{time_stamp}_{trmt}_s_matrix.tsv", sep='\t')
+            # print(abc)
+            # # Plot KDE for each treatment DataFrame 
+            # # sns.kdeplot(trmt_matrix['sum'], label=f'Treatment {trmt}', 
+            # #              fill=True, color=color_map_sns[trmt])
+            # sns.ecdfplot(trmt_matrix['sum'], label=f'Treatment {trmt}', 
+            #             linewidth=1.5, color=color_map_sns[trmt]) #, linestyle='-.'
+            # # sns.ecdfplot(trmt_matrix['sum_c'], label=f'Carbon {trmt}', 
+            # #             linewidth=1.5, linestyle='-.', color=color_map_sns[trmt])
+
+            # trmt_matrix = trmt_matrix[np.abs(trmt_matrix['sum']) > 5]
+            # trmt_matrix = trmt_matrix.sort_values(by='sum')
+            # metabolites = list(trmt_matrix.index.unique())
+            # find_reactions(metabolites, model_path, trmt_pred[trmt], trmt_matrix, trmt)
+
+            # # print(trmt_matrix['sum'].describe())
+            # fig.add_trace(
+            #             go.Scatter(x=trmt_matrix.index, 
+            #                     y=trmt_matrix["sum"], 
+            #                     name = f"{trmt} - Predicted Flux", 
+            #                     # mode = 'markers',
+            #                     marker = dict(
+            #                         color=color_map[trmt],  # Marker color
+            #                         size=7,       # Marker size
+            #                         symbol='circle' # Marker shape
+            #                     ),
+            #                     line=dict(
+            #                         color=color_map[trmt],  # Line color
+            #                         width=2       # Line width
+            #                     ), 
+            #                     showlegend=True
+            #                 ), row=1, col=col#, secondary_y=False#, showlegend=True  
+            #         )
+            # # trmt_matrix = trmt_matrix[['cpd00810_c0', 'cpd00070_d0', 'cpd00242_d0', 'cpd00247_c0', 'cpd00103_c0', 'cpd00011_d0']]
+            # # trmt_matrix = trmt_matrix[(np.abs(trmt_matrix['cpd00810_c0'])>0) | (np.abs(trmt_matrix['cpd00070_d0'])>0) | (np.abs(trmt_matrix['cpd00242_d0'])>0)]
+            # # trmt_matrix.to_csv(f"{saveTo}{spc}_{time_stamp}{trmt}_s_matrix_subset.tsv", sep='\t')
+        
+        # # fig.update_yaxes(range=[-105, 105], secondary_y=True)
+        # # fig.update_yaxes(range=[-0.2, 7.5], secondary_y=False)
+        # fig.update_layout(height=400, width=1600, font=dict(family='Times New Roman'), showlegend=True)
+        # # plot_path = f"export_cBalance_{trmt}.png"
+        # # pio.write_image(fig, plot_path, scale=5, width=380, height=500)
+        # fig.show()
+
+        # # Add titles and labels
+        # plt.title('PDF of Net Flux/Carbon flux by Treatment', fontsize=16)
+        # plt.xlabel('Net Flux/Carbon flux', fontsize=12)
+        # plt.ylabel('Density', fontsize=12)
+        # # Add a legend to differentiate treatments
+        # plt.legend(title='Treatment')
+        # # Show the plot
+        # plt.show()
 
 
     ## Compute carbon flux
@@ -646,7 +770,7 @@ if __name__ == '__main__':
     scores_df = read_scores(scores_path, spc, tissue, time_stamp, projCols)
     print(scores_df.head())
     if relab:
-        scores_path = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Dec6/{spc}_relab_rxn_scores_tmm.csv"
+        scores_path = f"/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/integration_results/reaction_scores_binding_Dec6/{spc}_relab_rxn_scores_tmm.csv"
         relab_scores_df = read_scores(scores_path, spc, tissue, time_stamp, projCols, relab=True)
         print(relab_scores_df.head())
         print(relab_scores_df.describe())
@@ -675,8 +799,10 @@ if __name__ == '__main__':
     pred_df = pa.merge(pred_df, fba_fluxes_df, how="left", on=merge_on)
     pred_df = pa.merge(pred_df, vbf_df, how="left", on=merge_on)
     #     write to file
+    print(pred_df.head())
+    print(prediction_file.replace(".tsv", "_fba_Vbf_RES.tsv"))
     pred_df.to_csv(prediction_file.replace(".tsv", "_fba_Vbf_RES.tsv"), sep="\t", index=False)
-    # print(abc)
+    print(abc)
     generate_CDFs(pred_df, treatments, time_stamp)
     # print(abc)
 
@@ -716,7 +842,7 @@ if __name__ == '__main__':
     print(wide_pred_df.columns)
 
     # Generate radar plot
-    if True:
+    if False:
         generate_radarPlot(sig_reactions, wide_pred_df)
         print(abc)
 
@@ -763,4 +889,4 @@ if __name__ == '__main__':
     diffs.to_csv(prediction_file.replace(".tsv", "_diffs.csv"))
 
     plot_hist_diffs(diffs, msrs, treatments, spc, tissue, time_stamp)
-    # fba_fluxes_df.to_csv("/Users/sea/Projects/AMN/omic_amn/Result/noBiomassMax_constraints_3.5_noEXcpd00727_fixedRev/fba_results_nonZero.csv")
+    # fba_fluxes_df.to_csv("/Users/selalaoui/Projects/AMN/omic_amn/Result/noBiomassMax_constraints_3.5_noEXcpd00727_fixedRev/fba_results_nonZero.csv")

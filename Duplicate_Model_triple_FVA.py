@@ -10,16 +10,19 @@ from cobrakbase.core.kbase_object_factory import KBaseObjectFactory
 KBOF = KBaseObjectFactory()
 
 model_path = "Dataset_input/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_061124.json"
-model_path = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/plastidial_models/ortho_jun20_models/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP.json"
-media_path = "Dataset_input/PlantPlastidialAutotrophicMedia_noATP.json"
+model_path = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/plastidial_models/ortho_jun20_models/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP.json"
+media_path = "Dataset_input/PlantPlastidialAutotrophicMedia_noATP_noADP.json"
 
-# model_path = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/fullmodels_media/ortho_jun20_models/Athaliana_Thylakoid_Reconstruction_ComplexFix_070224.json"
-# media_path = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/fullmodels_media/PlantAutotrophicMedia.json"
+model_path = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/data/metabolic_models/plastidial_models/ortho_jun20_models/ptrich_4.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP.json"
+# media_path = "Dataset_input/PlantPlastidialAutotrophicMedia_noATP_noADP.json"
+
+# model_path = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/fullmodels_media/ortho_jun20_models/Athaliana_Thylakoid_Reconstruction_ComplexFix_070224.json"
+# media_path = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/fullmodels_media/PlantAutotrophicMedia.json"
 
 
-model = KBOF.build_object_from_file(model_path, "KBaseFBA.FBAModel")
-co_media = KBOF.build_object_from_file(media_path, "KBaseBiochem.Media")
-model.medium = co_media
+# model = KBOF.build_object_from_file(model_path, "KBaseFBA.FBAModel")
+# co_media = KBOF.build_object_from_file(media_path, "KBaseBiochem.Media")
+# model.medium = co_media
 
 # In this case the local root of the repo is our working directory
 DIRECTORY = './'
@@ -30,9 +33,9 @@ print(os.listdir(DIRECTORY))
 
 from Library.Duplicate_Model import *
 
-
+model_path = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/data/metabolic_models/plastidial_models/ortho_jun20_models/sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP.xml"
 # model_path = "Dataset_input/athaliana_plastidial_thylakoid_051024.xml"
-# model = cobra.io.read_sbml_model(model_path)
+model = cobra.io.read_sbml_model(model_path)
 
 
 # %% codecell
@@ -127,15 +130,26 @@ for i in range(10):
 # %% codecell
 dup_co_model.repair() # rebuild indices and pointers in the model if necessary
 # %% codecell
-new_name = model_path[:-5] + "_duplicated" + model_path[-5:]
+new_name = model_path[:-5] + "_duplicated_noP" + model_path[-5:]
 new_name = new_name.replace('json', 'xml')
 
 ## restrict media
-# remove_med = ["EX_cpd00067_e0_i", "EX_cpd00007_e0_i", "EX_cpd00009_e0_i", "EX_cpd00008_e0_i", "EX_cpd00013_e0_o", "EX_cpd00048_e0_o", "EX_cpd11632_e0_o", "EX_cpd00011_e0_o", "EX_cpd00001_e0_o", "EX_cpd00002_e0_o"]
-remove_med = ["EX_cpd00067_e0_i", "EX_cpd00007_e0_i", "EX_cpd00008_e0_i", "EX_cpd00008_e0_o", "EX_cpd11632_e0_o", "EX_cpd00011_e0_o", "EX_cpd00001_e0_o", "EX_cpd00002_e0_o", 'EX_cpd00005_e0_o', 'EX_cpd00006_e0_i']
-# EX_cpd00009_e0_i
+## -- Plastidial model media -- remove phosphate
+remove_med = ["EX_cpd00067_e0_i", "EX_cpd00007_e0_i", "EX_cpd00008_e0_i", "EX_cpd00013_e0_o", 
+"EX_cpd00048_e0_o", "EX_cpd11632_e0_o", "EX_cpd00011_e0_o", "EX_cpd00001_e0_o", "EX_cpd00002_e0_o", 
+"EX_cpd00009_e0_o", "EX_cpd00002_e0_i", "EX_cpd00008_e0_o"]
+# , "EX_cpd00009_e0_i"
+## -- Full model media
+# remove_med = ["EX_cpd00067_e0_i", "EX_cpd00007_e0_i", "EX_cpd00008_e0_i", "EX_cpd00008_e0_o", "EX_cpd11632_e0_o", 
+# "EX_cpd00011_e0_o", "EX_cpd00001_e0_o", "EX_cpd00002_e0_o", 'EX_cpd00005_e0_o', 'EX_cpd00006_e0_i', 
+# 'EX_cpd00009_e0_o', 'EX_cpd00254_e0_o', 'EX_cpd10515_e0_o', 'EX_cpd11624_e0_i', 'EX_cpd11624_e0_o',  
+# 'EX_cpd00098_e0_i', 'EX_cpd00098_e0_o',  'EX_cpd27368_e0_i', 'EX_cpd27368_e0_o',  'EX_cpd00204_e0_i',  
+# 'EX_cpd00075_e0_i', 'EX_cpd00075_e0_o',  'EX_cpd00076_e0_i', 'EX_cpd00076_e0_o',  'EX_cpd00209_e0_i', 
+# 'EX_cpd00209_e0_o',  'EX_cpd00073_e0_i', 'EX_cpd00073_e0_o']
+# # EX_cpd00009_e0_i
 solution = dup_co_model.optimize()
 print(solution)
+
 for med in remove_med:
     print(med)
     dup_co_model.remove_reactions(med)
@@ -147,13 +161,31 @@ for med in remove_med:
 
 cobra.io.write_sbml_model(dup_co_model, new_name)
 solution = model.optimize()
-print(solution)
+## -- Full model
+# cpds = ['cpd03091_c0', 'cpd03091_d0', 'cpd03091_m0', 'cpd02701_m0', 'cpd02701_c0']
+# for cpd_id in cpds:
+# 	if cpd_id in model.metabolites:
+# 	    cpd = model.metabolites.get_by_id(cpd_id)
+# 	    print(cpd.summary())
+# print(solution)
 
 solution = dup_co_model.optimize()
 print(solution)
 print("Duplicated model's location: " + new_name)
+print("Total number of reactions: ", len(dup_co_model.reactions))
 
-# print(abc)
+for reaction in dup_co_model.reactions:
+    if('SK' in reaction.id):
+        print(reaction.id)
+        
+print(abc)
+cpds = ['cpd03091_c0', 'cpd03091_d0', 'cpd03091_m0', 'cpd02701_m0', 'cpd02701_c0']
+for cpd_id in cpds:
+	if cpd_id in model.metabolites:
+	    cpd = dup_co_model.metabolites.get_by_id(cpd_id)
+	    print(cpd.summary())
+
+print(abc)
 print("Running triple FVA ...")
 dup_co_model.reactions.get_by_id("bio1_biomass").lower_bound=0.5
 fva_rxns_explore = list(dup_co_model.reactions)

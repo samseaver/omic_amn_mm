@@ -34,29 +34,40 @@ seed = 10
 np.random.seed(seed=seed)  # seed for random number generator
 
 spc = 'athaliana'
-cobraname = 'Athaliana_Thylakoid_Reconstruction_ComplexFix_070224_duplicated'
+cobraname = 'Athaliana_Thylakoid_Reconstruction_ComplexFix_070224_duplicated_noP'
 mediumname = 'plant_autotrophic_media_restricted'
 
-spc = 'Sorghum'
-cobraname = 'sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP_duplicated'
+spc = 'Poplar'
+cobraname = 'ptrich_4.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP_duplicated_noP'
 # cobraname = 'sbicolor_plastidial_model_duplicated'
-mediumname = 'plastidial_model_duplicated_restricted_media_noATP_noADP'
+mediumname = 'plastidial_model_duplicated_restricted_media_noATP_noADP_noP'
+
+spc = 'Sorghum'
+cobraname = 'sbicolor_3.1.1_plastid_Thylakoid_Reconstruction_ComplexFix_070224_noADP_duplicated_noP'
+# cobraname = 'sbicolor_plastidial_model_duplicated'
+mediumname = 'plastidial_model_duplicated_restricted_media_noATP_noADP_noP'
 
 
 if 'atha' in spc:
-    time_stamp = 'ZT9'
-    other_colm = 'C24' # 'TSU', 'C24'
-    treatments = ['Control', 'Freeze']
+    time_stamp = 'all' #'ZT9'
+    other_colm = 'TSU' # 'TSU', 'C24'
+    if time_stamp == 'all':
+        treatments = ["Control_ZT1", "Control_ZT5", "Control_ZT9", "Control_ZT13", "Control_ZT17",
+                      "Control_ZT21", "Freeze_ZT1", "Freeze_ZT5", "Freeze_ZT9", "Freeze_ZT13",
+                      "Freeze_ZT17", "Freeze_ZT21"]
+    else:
+        treatments = ['Control', 'Freeze']
     # athaliana_thylakoid_C24_ZT9_Vbf_maxCtrl
-    Vbfname = f"athaliana_complexFix_{other_colm}_{time_stamp}_Vbf_maxCtrl.csv"
+                # athaliana_complexFix_C24_all_noADP_Vbf_maxCtrl_mixedRelab
+    Vbfname = f"athaliana_complexFix_{other_colm}_{time_stamp}_noADP_Vbf_maxCtrl_mixedRelab.csv"
 else:
-    time_stamp = '07d'
+    time_stamp = '21d'
     other_colm = 'Leaf'
     treatments = ['Control', 'FeLim', 'FeEX', 'ZnLim', 'ZnEx']
     # Sorghum_thylakoid_Leaf_21d_Vbf_maxCtrl
     # Vbfname = f"Sorghum_{time_stamp}_Vbf_noOrganellar_maxCtrl.csv"
     # Vbfname = f"Sorghum_thylakoid_{other_colm}_{time_stamp}_Vbf_maxCtrl.csv"
-    Vbfname = f"Sorghum_complexFix_{other_colm}_{time_stamp}_noADP_Vbf_maxCtrl_mixedRelab.csv"
+    Vbfname = f"{spc}_complexFix_{other_colm}_{time_stamp}_noADP_Vbf_maxCtrl_mixedRelab.csv"
 
 mediumbound = 'UB' # Exact bound (EB) or upper bound (UB)
 method = 'Vbf' #'FBA' # FBA, pFBA or EXP, Vbf, Vbf_Wt
@@ -90,7 +101,9 @@ parameter.save(trainingfile, reduce=reduce, verbose=verbose)
 # np.savetxt("Result/AfterSaveTempPout.tsv", parameter.Pout, delimiter='\t')
 # Verifying
 parameter = TrainingSet()
+print("All Saved .. now loading")
 parameter.load(trainingfile)
+print("printing ... ")
 parameter.printout()
 # np.savetxt("Result/AfterLoadTempPout.tsv", parameter.Pout, delimiter='\t')
 

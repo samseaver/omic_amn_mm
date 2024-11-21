@@ -36,6 +36,7 @@ visible_devices = tf.config.get_visible_devices()
 for device in visible_devices:
     assert device.device_type != 'GPU'
 
+
 # print(tf.config.list_physical_devices('GPU'))
 
 # tf.debugging.set_log_device_placement(False)
@@ -52,10 +53,13 @@ from keras.layers import concatenate, add, subtract, dot
 # from keras.wrappers.scikit_learn import KerasRegressor
 from scikeras.wrappers import KerasRegressor
 from keras.layers import Activation
+# --- depends on TF version
 # from keras.utils.generic_utils import get_custom_objects
 # from keras.utils.generic_utils import CustomObjectScope
+
 from tensorflow.keras.utils import get_custom_objects
 from tensorflow.keras.utils import CustomObjectScope
+# ---
 from keras.callbacks import EarlyStopping, CSVLogger
 
 from sklearn import linear_model
@@ -71,7 +75,7 @@ from keras_core import ops
 ###############################################################################
 import wandb
 print("Using W&B version ", wandb.__version__)
-from wandb.keras import WandbMetricsLogger, WandbEvalCallback, WandbCallback, WandbModelCheckpoint
+from wandb.integration.keras import WandbMetricsLogger, WandbEvalCallback, WandbCallback, WandbModelCheckpoint
 wandb.login()
 
 # # Implement your model prediction visualization callback
@@ -336,7 +340,7 @@ def compute_loss_lambda(value):
     num_const = 4.0
     # num_const = 1.0
     L = tf.math.divide_no_nan(L, tf.constant(num_const, dtype=tf.float32))
-    print(L.shape)
+    # print(L.shape)
 
     return L
 
@@ -396,7 +400,7 @@ def compute_loss(y_true, y_pred, Vbf, Vin, S, Pin, Pout):
     num_const = 4.0
     # num_const = 1.0
     L = tf.math.divide_no_nan(L, tf.constant(num_const, dtype=tf.float32))
-    print(L.shape)
+    # print(L.shape)
 
     return L
 
@@ -636,7 +640,7 @@ def Loss_Vout_constraint(V, Pout, Vout, gradient=False):
         Pout = tf.convert_to_tensor(np.float32(Pout))
     Loss = tf.linalg.matmul(V, tf.transpose(Pout), b_is_sparse=True) - Vout
     Loss = tf.keras.activations.relu(Loss)
-    print(Loss.shape)
+    # print(Loss.shape)
     Loss_norm = tf.norm(Loss, axis=1, keepdims=True)/Pout.shape[0] # rescaled
     if gradient:
         # dLoss = tf.linalg.matmul(Loss, Pout, b_is_sparse=True) # derivate
@@ -672,7 +676,7 @@ def Loss_Vin(V, Pin, Vin, bound='UB', gradient=False):
         dLoss =  0 * V
     return Loss_norm, dLoss
 
-def Loss_SV(V, S, gradient=False):
+def Loss_SV(V, S, gradient=False, save=False):
     # Gradient for SV constraint
     # Loss = ||SV||
     # dLoss =  ∂([SV]^2)/∂V = S^T SV
@@ -680,6 +684,11 @@ def Loss_SV(V, S, gradient=False):
         S  = tf.convert_to_tensor(np.float32(S))
     Loss = tf.linalg.matmul(V, tf.transpose(S), b_is_sparse=True)
     Loss_norm = tf.norm(Loss, axis=1, keepdims=True)/S.shape[0] # rescaled
+    
+    if save:
+        np.savetxt("sv_loss.csv", Loss, delimiter=',')
+        np.savetxt("sv_lossNorm.csv", Loss_norm, delimiter=',')
+
     if gradient:
         dLoss = tf.linalg.matmul(Loss, S, b_is_sparse=True) # derivate
         dLoss = dLoss / (S.shape[0]*S.shape[0])  # rescaling
@@ -766,7 +775,7 @@ def Loss_all5(V, Vin, Vout, Vlb, parameter, gradient=False, p_sv=1):
     L = tf.math.divide_no_nan(L, tf.constant(num_const, dtype=tf.float32))
     return L, dL1+dL2+dL3+dL4+dL5
 
-def Loss_all(V, Vin, Vout, Vlb, parameter, gradient=False, wt=False):
+def Loss_all(V, Vin, Vout, Vlb, parameter, gradient=False, wt=False, p_sv=1, save=False):
     # mean square sum of L1, L2, L3, L4, L5
     if (Vout is None) or ((Vout.shape[0] is not None) and (Vout.shape[0] < 1)): # No target provided = no Loss_Vout
         L, dL = Loss_constraint(V, Vin, Vlb, parameter, gradient=gradient)
@@ -777,7 +786,7 @@ def Loss_all(V, Vin, Vout, Vlb, parameter, gradient=False, wt=False):
     # L1, dL1 = Loss_Vout(V, parameter.Pout, Vout, gradient=gradient)
     L1, dL1 = Loss_Vout_constraint(V, parameter.Pout, Vout, gradient=gradient)
     # print("L1, dL1: ", L1, dL1)
-    L2, dL2 = Loss_SV(V, parameter.S, gradient=gradient)
+    L2, dL2 = Loss_SV(V, parameter.S, gradient=gradient, save=save)
     # print("L2, dL2: ", L2, dL2)
     # apply penalty
     dL2 = dL2 * p_sv
@@ -810,24 +819,31 @@ def Loss_all(V, Vin, Vout, Vlb, parameter, gradient=False, wt=False):
     # if wt:
     #     L = np.mean(L.numpy())
 
-    return L, dL1+dL2+dL3+dL4
+    dL = dL1+dL2+dL3+dL4
+
+    return L, dL, L1, L2, L3, L4
 
 def custom_ReLU(V, Vout, Pout):
     # Vpos = tf.zeros(V.shape, dtype=tf.dtypes.float32)
     V = tf.keras.activations.relu(V)
+
     Pout_i = np.identity(Pout.shape[0])
+
     if not tf.is_tensor(Pout):
         Pout = tf.convert_to_tensor(np.float32(Pout))
         Pout_i = tf.convert_to_tensor(np.float32(Pout_i))
+
     V1 = Vout - tf.linalg.matmul(V, tf.transpose(Pout))
     # print(V1.shape)
     V1 = Vout - tf.keras.activations.relu(V1)
     # print(V1.shape)
+
     V2 = Pout_i - Pout
     # print(V2.shape)
     V2 = tf.linalg.matmul(V, V2)
     # print(V2.shape)
     Vpos = V1 + V2
+
     return Vpos
 
 ###############################################################################
@@ -990,10 +1006,12 @@ def Gradient_Descent(V, Vin, Vout, Vlb, parameter, mask, trainable=True, history
     # history: to specify if loss is computed and recorded
     # Output: Loss and updated V
 
+    save = False
     # Not history here if trainable
     history = False if trainable else history
+    svp = 20
 
-    name = parameter.trainingfile.split('UB_')[1]
+    name = parameter.trainingfile.split('UB_')[1]+f"_noADP_noP_{svp}"
     wandb.init(
         # Set the project where this run will be logged
         project="omic_amn",
@@ -1012,34 +1030,41 @@ def Gradient_Descent(V, Vin, Vout, Vlb, parameter, mask, trainable=True, history
     Loss_mean_history, Loss_std_history, diff = [], [], 0 * V
     for t in range(1, parameter.timestep+1):  # Update V with GD
         # Get Loss and gradient
-        L, dL = Loss_all(V, Vin, Vout, Vlb, parameter, gradient=True, p_sv = 2)
+        L, dL, lVbf, Lsv, LVin, LPos = Loss_all(V, Vin, Vout, Vlb, parameter, gradient=True, p_sv = svp, save=save)
+        save = False
         dL = tf.math.multiply(dL, mask) # Apply mask on dL
         # Update V with learn and decay rates
         diff = parameter.decay_rate * diff - parameter.learn_rate * dL
         V = V + diff
         # V = np.maximum.reduce([V,Vout])
         # V = tf.keras.activations.relu(V)
+        pre_relu_V = V
         V = custom_ReLU(V, Vout, parameter.Pout)
         # print(abc)
         # Compile Loss history
         if history:
             Loss_mean, Loss_std = np.mean(L), np.std(L)
+            lVbf_mean, Lsv_mean, LVin_mean, LPos_mean = np.mean(lVbf), np.mean(Lsv), np.mean(LVin), np.mean(LPos)
             Loss_mean_history.append(Loss_mean)
             Loss_std_history.append(Loss_std)
             # if verbose and (np.log10(t) == int(np.log10(t)) \
             #                 or t/1.0e3 == int(t/1.0e3)):
             if verbose and (t/1.0e3 == int(t/1.0e3)):
-
+                save = True
                 print('QP-Loss', t, Loss_mean, Loss_std, ' -> bio flux ', V[:, parameter.bio_id])
                 # log metrics using wandb.log
                 report_dict = {f'{parameter.treatments[i]}_bio':V[i, parameter.bio_id] \
                                     for i in range(len(parameter.treatments))}
-                report_dict['epochs'] = t
-                report_dict['loss']   = Loss_mean
+                report_dict['epochs']   = t
+                report_dict['loss']     = Loss_mean
+                report_dict['lossVbf']  = lVbf_mean
+                report_dict['lossSV']   = Lsv_mean
+                report_dict['lossVin']  = LVin_mean
+                report_dict['lossVpos'] = LPos_mean
                 wandb.log(report_dict)
 
     wandb.finish()
-    return V, Loss_mean_history, Loss_std_history
+    return pre_relu_V, Loss_mean_history, Loss_std_history
 
 def get_V0(inputs, parameter, targets, lower_bounds, trainable, verbose=False):
     # Get initial vector V0 from input and target
@@ -1243,7 +1268,7 @@ def LP_layers(inputs_bounds, parameter, targets = np.asarray([]).reshape(0,0), l
     Loss_mean_history, Loss_std_history = [], []
     for t in range(1, parameter.timestep+1):
         # Get Loss and gradients
-        L, _ = Loss_all(V, Vin, Vout, Vlb, parameter)
+        L, _, _, _, _, _ = Loss_all(V, Vin, Vout, Vlb, parameter)
         dV, dM = LP(V, M, b_int, b_ext, parameter, verbose=verbose)
         dV = tf.math.multiply(dV, mask) # Apply mask on dV
         V  = V + parameter.learn_rate * dV
@@ -1690,13 +1715,13 @@ def print_loss_evaluate(y_true, y_pred, Vin, Vlb, parameter):
         loss_out0 = np.mean(loss_out0.numpy())
         loss_cst0, _ = Loss_constraint(V0, Vin, Vlb, parameter)
         loss_cst0 = np.mean(loss_cst0.numpy())
-        loss_all0, _ = Loss_all(V0, Vin, Vout, Vlb, parameter)
+        loss_all0, _, _, _, _, _ = Loss_all(V0, Vin, Vout, Vlb, parameter)
         loss_all0 = np.mean(loss_all0.numpy())
     loss_outf, _ = Loss_Vout(Vf, parameter.Pout, Vout)
     loss_outf = np.mean(loss_outf.numpy())
     loss_cstf, _ = Loss_constraint(Vf, Vin, Vlb, parameter)
     loss_cstf = np.mean(loss_cstf.numpy())
-    loss_allf, _ = Loss_all(Vf, Vin, Vout, Vlb, parameter)
+    loss_allf, _, _, _, _, _ = Loss_all(Vf, Vin, Vout, Vlb, parameter)
     loss_allf = np.mean(loss_allf.numpy())
     print('Loss out on V0: ', loss_out0)
     print('Loss constraint on V0: ', loss_cst0)

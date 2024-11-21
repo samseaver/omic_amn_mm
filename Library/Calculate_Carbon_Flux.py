@@ -11,6 +11,9 @@ sys.path.append(project_root)
 # from https://github.com/ModelSEED/ModelSEEDDatabase/blob/master/Libs/Python/BiochemPy/Compounds.py
 ModelSEEDDB_path = '/Users/seaver/Projects/ModelSEEDDatabase/Libs/Python/'
 ModelSEEDDB_path = '/Users/sea/packages/ModelSEED_KBase/ModelSEEDDatabase/Libs/Python/'
+# ModelSEEDDB_path = '/Users/selalaoui/packages/ModelSEED_KBase/ModelSEEDDatabase/Libs/Python/'
+ModelSEEDDB_path = '/Users/selalaoui/packages/ModelSEEDDatabase/Libs/Python/'
+ModelSEEDDB_path = '/Users/selalaoui/packages/ModelSEEDDatabase/Libs/Python/'
 sys.path.append(ModelSEEDDB_path)
 from BiochemPy import Compounds
 from cobra.io import read_sbml_model
@@ -27,7 +30,7 @@ import json
 # # try:
 # data = json.load(urlopen(PS_url+PS_tag+PS_json))
 # except URLError:
-roles_file = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/PlantSEED_Roles.json"
+roles_file = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/data/metabolic_models/PlantSEED_Roles.json"
 data = None
 with open(roles_file, 'r') as f:
     data = json.loads(f.read())
@@ -36,7 +39,7 @@ with open(roles_file, 'r') as f:
 # cpd_url = 'https://raw.githubusercontent.com/ModelSEED/ModelSEEDDatabase/dev/Biochemistry/compound_'
 # cpd_db = http.request('GET',cpd_url+'00.json').json()
 
-cpds_file = "/Users/sea/Projects/QPSI_project/Enzyme_Abundance/data/metabolic_models/compound_00.json"
+cpds_file = "/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/data/metabolic_models/compound_00.json"
 data = None
 with open(cpds_file, 'r') as f:
     cpd_db = json.loads(f.read())
@@ -151,6 +154,18 @@ class Calculate_Carbon_Flux:
         print("flux_df ", flux_df.shape)
         cpd_flux = stoichio_df.dot(flux_df)
         cpd_flux.to_csv("cpd_flux_Vbf_ReLU.tsv", sep='\t')
+
+    def metabolite_molecule(self, co_model, molecule):
+        met_mol_dict = {}
+        for cpd in co_model.metabolites:
+            formula = cpd_db[cpd.id.split('_')[0]]['formula'] if not cpd.formula else cpd.formula
+            try:
+                met_mol_dict[cpd.id] = self.compound_helper.parseFormula(formula)[molecule]
+            except KeyError: 
+                met_mol_dict[cpd.id] = 0
+
+        return met_mol_dict
+
 
 if __name__ == '__main__':
     ccf_obj = Calculate_Carbon_Flux()

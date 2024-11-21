@@ -2082,6 +2082,7 @@ class Neural_Model:
         print('model output dim:', self.output_dim)
         print('model medium bound:', self.mediumbound)
         print('timestep:', self.timestep)
+        print('Biomass reaction id: ', self.bio_id)
         if self.trainingfile:
             if os.path.isfile(self.trainingfile+'.npz'):
                 print('training set size', self.X.shape, self.Y.shape)

@@ -6,22 +6,22 @@ import plotly.express as px
 
 from cobra.io import read_sbml_model
 
-# fluxes_file = "/Users/sea/Projects/QPSI_project/QPSI_Modeling/data/FVA_results/draft_fva_results_flexible_biomass_110323.tsv"
-# fluxes_file = "/Users/sea/Projects/QPSI_project/QPSI_Modeling/data/FVA_results/draft_fva_results_flexible_biomass_0.8_maxmax_110623.tsv"
+# fluxes_file = "/Users/selalaoui/Projects/QPSI_project/QPSI_Modeling/data/FVA_results/draft_fva_results_flexible_biomass_110323.tsv"
+# fluxes_file = "/Users/selalaoui/Projects/QPSI_project/QPSI_Modeling/data/FVA_results/draft_fva_results_flexible_biomass_0.8_maxmax_110623.tsv"
 
 # spc, day, tissue = 'Athaliana', 'ZT1', 'Leaf'
 # spc, day, tissue = 'Poplar', '21d', 'Root'
 
-spc, day, grpr3 = 'athaliana', 'ZT9', 'C24' #'C24' or 'TSU'
+spc, day, grpr3 = 'athaliana', 'all', 'TSU' #'C24' or 'TSU'
 spc, day, grpr3 = 'Sorghum', '21d', 'Leaf'
 
 ## FVA fluxes
-fluxes_file = f"/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/FVA_Output_{spc}.tsv"
+fluxes_file = f"/Users/selalaoui/Projects/AMN/omic_amn_mm/Dataset_input/FVA_Output_{spc}.tsv"
 
 
 if 'atha' in spc:
     ## new thylakoid fluxes
-    scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/secMetResults/{spc}_objective_abundance_Control.tsv"
+    scores_file = f"/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/integration_results/secMetResults/{spc}_objective_abundance_Control.tsv"
     ctrl_trmt = 'Control'
     treatments = ['Freeze']
     value_col = 'value'
@@ -30,22 +30,22 @@ else:
     msr = 'tmm'
     avogadro = 6.02214076e+23
     ## Relative abundance
-    relab_scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Jul2/plastidial_model/{spc}_relab_rxn_scores_{msr}.csv"
+    relab_scores_file = f"/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/integration_results/reaction_scores_binding_Oct9/plastidial_model/{spc}_relab_rxn_scores_{msr}.csv"
     ## Objective abundance
-    scores_file = f"/Users/sea/Projects/QPSI_project/Enzyme_Abundance/integration_results/reaction_scores_binding_Jul2/plastidial_model/{spc}_objective_abundance_Control.tsv"
+    scores_file = f"/Users/selalaoui/Projects/QPSI_project/Enzyme_Abundance_all/integration_results/reaction_scores_binding_Oct9/plastidial_model/{spc}_objective_abundance_Control.tsv"
     treatments = ['FeLim', 'FeEX', 'ZnLim', 'ZnEx']
     ctrl_trmt = 'Control'
     other_colm = 'tissue'
 
 
 
-# scores_file = "/Users/sea/Projects/QPSI_project/QPSI_Modeling/integration_results/secMetResults/Atha_objective_abundance_ZT1.csv"
-# # scores_file = f"/Users/sea/Projects/QPSI_project/QPSI_Modeling/integration_results/reaction_scores_binding_Dec6/{spc}_tmm_scores.csv"
+# scores_file = "/Users/selalaoui/Projects/QPSI_project/QPSI_Modeling/integration_results/secMetResults/Atha_objective_abundance_ZT1.csv"
+# # scores_file = f"/Users/selalaoui/Projects/QPSI_project/QPSI_Modeling/integration_results/reaction_scores_binding_Dec6/{spc}_tmm_scores.csv"
 
 def get_rxn_ID(row):
     # print(row['rxn_ID'])
 
-    if any(y in row['rxn_ID'] for y in ['_f', '_r', '_i', '_o']):
+    if any(row['rxn_ID'].endswith(y) for y in ['_f', '_r', '_i', '_o']):
         # print(row['rxn_ID'].rsplit("_", 1)[0])
         id_only = row['rxn_ID'].rsplit("_", 1)[0]
     else:
@@ -55,7 +55,6 @@ def get_rxn_ID(row):
     #     return id_only.replace('y0', 'd0')
     # else:
     return id_only
-
 
 def load_fluxes(fluxes_file, all_rxn=True, verbose=False):
     if all_rxn:
@@ -140,20 +139,33 @@ def load_scores(ctrl_trmt= 'Control', value_col='value', verbose=False):
     # Use control treatment only
     control = scores_df[(scores_df['treatment'] == ctrl_trmt) &
                             (scores_df[other_colm] == grpr3)]
+
     # drop all columns except score and IDs
     control = control[[value_col, 'rxn_ID']]
     control = control.groupby('rxn_ID').mean()
     if verbose: print(control.head())
 
     # Keep one set of scores: other_colm, time stamp
-    relab_scores_df = relab_scores_df[(relab_scores_df[other_colm] == grpr3) &
-                                    (relab_scores_df['time_stamp'] == day)]
+
+    if grpr3 in ['C24', 'TSU']:
+        relab_scores_df = relab_scores_df[(relab_scores_df[other_colm] == grpr3)]
+        relab_scores_df['treatment'] =\
+                            relab_scores_df['treatment']+"_"+relab_scores_df['time_stamp']
+        # relab_scores_df = relab_scores_df[[value_col, 'treatment', 'rxn_ID', 'time_stamp']]
+        print(relab_scores_df.head())
+
+
+    else:
+        relab_scores_df = relab_scores_df[(relab_scores_df[other_colm] == grpr3) &
+                                        (relab_scores_df['time_stamp'] == day)]
     # Keep only important columns
     relab_scores_df = relab_scores_df[[value_col, 'treatment', 'rxn_ID']]
+    # print(abc)
 
     if verbose:
         print(relab_scores_df.head())
         print(control.head())
+
     return relab_scores_df, control
 
 def generate_all_df(treatments, value_col='value', trmt_column='treatment', verbose=False):
@@ -168,7 +180,7 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
     # --> Get matching reaction ID with non-duplicated model
     fluxes_dup['rxn_ID_only'] = fluxes_dup.apply(lambda row: get_rxn_ID(row), axis=1)
     print("fluxes_dup: \n", fluxes_dup.head())
-    fluxes_dup.to_csv('temp_fluxes.csv')
+    # fluxes_dup.to_csv('temp_fluxes.csv')
 
     # replace reaction ID in scores DF by the duplicated scores and suplicate entries for
     # reversible reactions keeping the same RES value for _f and _r reactions
@@ -178,9 +190,9 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
     scores_df = scores_df.merge(fluxes_dup[['rxn_ID_only', 'rxn_ID']], left_on='rxn_ID',
                                 right_on='rxn_ID_only', how=how, suffixes=('_l', ''))
     print("After duplicating : ", scores_df.shape)
-    scores_df.to_csv('temp_scores_df2.csv')
+    # scores_df.to_csv('temp_scores_df2.csv')
     scores_df = scores_df[scr_cols]
-    scores_df.to_csv('temp_scores_df3.csv')
+    # scores_df.to_csv('temp_scores_df3.csv')
 
 
 
@@ -215,43 +227,68 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
         print(all_control['kapp'].describe())
 
     # Compute V_bv for every treatment
-    if verbose:  print("Treatments: ", treatments)
     scores_df['rxn_ID'] = scores_df['rxn_ID'].astype(str)
     all_control['rxn_ID'] = all_control['rxn_ID'].astype(str)
-    treatments = [ctrl_trmt] + treatments
 
-    print("all_control: \n", all_control.head())
-    print("scores_df: \n", scores_df.head())
+    # align K_app values with the reactions' scores for all treatments<_timePoint>
+    all_control = pa.merge(all_control, scores_df, on='rxn_ID', how='left')
+    all_control['v'] = all_control[value_col] * all_control['kapp']
+    all_control.rename(columns={value_col:"score"}, inplace=True)
+    # pivot the dataframe to create a column for each treatment
+    ind = ['rxn_ID', 'mean_flux', 'kapp']
+    col = ['treatment']
+    val = ['score', 'v']
+    all_control = all_control.pivot(index=ind, columns=col, values=val)
+    all_control.columns = all_control.columns.map('{0[0]}_{0[1]}'.format)
+    all_control = all_control.reset_index()
+    print(all_control.head())
     # print(abc)
-    for trmt in treatments:
-        if verbose:  print("   --> Processing: ", trmt)
-        temp = scores_df[scores_df[trmt_column] == trmt][[value_col, 'rxn_ID']].copy()
-        # print(abc)
-        # print("merging temp ", temp.shape, ' to all_control ', all_control.shape)
-        # print("rxn_ID diffs: ", set(temp['rxn_ID'].unique())-set(all_control['rxn_ID'].unique()))
-        # print(set(temp['rxn_ID'].unique()))
-        # print(set(all_control['rxn_ID'].unique()))
-        all_control = all_control.merge(temp, on='rxn_ID', how='left')
-
-        if verbose:
-            print(all_control.columns)
-            print("After merging temp: ", all_control.shape)
-            print("computing V_bf ...")
-        all_control['v_'+trmt] = all_control[value_col] * all_control['kapp']
-
-        if verbose:
-            print("renaming RES column ...")
-        all_control.rename(columns={value_col:trmt+'_score'}, inplace=True)
-        # print(abc)
-
-    # print(all_control[all_control['rxn_ID'].isin(['rxn00018_d0'])])
+    #
+    # for trmt in treatments:
+    #     if verbose:  print("   --> Processing: ", trmt)
+    #     temp = scores_df[scores_df[trmt_column].str.contains(trmt)][[value_col, 'rxn_ID']].copy()
+    #     print(temp.shape)
+    #     print(temp.columns)
+    #     print(all_control.shape)
+    #     print(all_control.columns)
+    #     print(abc)
+    #     # all_control.to_csv(f"all_control_{trmt}_before_merge.csv")
+    #     # print(abc)
+    #     # print("merging temp ", temp.shape, ' to all_control ', all_control.shape)
+    #     # print("rxn_ID diffs: ", len(set(all_control['rxn_ID'].unique())-set(temp['rxn_ID'].unique())))
+    #     # print("temp ", len(set(temp['rxn_ID'].unique())))
+    #     # print("all_control ", len(set(all_control['rxn_ID'].unique())))
+    #     # print(abc)
+    #     all_control = pa.merge(all_control, temp, on='rxn_ID', how='left')
+    #     # print(all_control.shape)
+    #     # print(all_control.tail(5))
+    #     # all_control.to_csv(f"all_control_{trmt}.csv")
+    #     # print(abc)
+    #
+    #     if verbose:
+    #         print(all_control.columns)
+    #         print("After merging temp: ", all_control.shape)
+    #         print("computing V_bf ...")
+    #     all_control['v_'+trmt] = all_control[value_col] * all_control['kapp']
+    #     print(all_control.shape)
+    #
+    #     if verbose:
+    #         print("renaming RES column ...")
+    #     all_control.rename(columns={value_col:trmt+'_score'}, inplace=True)
+    #     # print(abc)
+    #
+    # # print(all_control[all_control['rxn_ID'].isin(['rxn00018_d0'])])
 
     # plot V_bf to compare
+    if verbose:  print("Treatments: ", treatments)
+    treatments = list(scores_df['treatment'].unique())
+    print(treatments)
     ls = ['v_'+x for x in treatments]
     ls = ['rxn_ID'] + ls
     all_control[ls].set_index('rxn_ID').plot()
-    # plt.show()
+    plt.show()
 
+    # print(abc)
     all_control.replace([np.inf, -np.inf], 0, inplace=True)
     all_control = all_control.fillna(0)
 
@@ -264,14 +301,14 @@ def generate_all_df(treatments, value_col='value', trmt_column='treatment', verb
     if 'relab' in scores_file:
         name = name + ['relab']
 
-    all_control[ls].to_csv("/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name)+"_maxCtrl_mixedRelab.csv", index=False)
+    all_control[ls].to_csv("/Users/selalaoui/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name)+"_maxCtrl_mixedRelab.csv", index=False)
 
-    all_control.to_csv("/Users/sea/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name+['kapp'])+"_maxCtrl_mixedRelab.csv", index=False)
+    all_control.to_csv("/Users/selalaoui/Projects/AMN/omic_amn_mm/Dataset_input/"+"_".join(name+['kapp'])+"_maxCtrl_mixedRelab.csv", index=False)
     return all_control[ls]
 
 def compare_predictions():
-    predictions_file = "/Users/sea/Projects/AMN/amn_release-main/Result/tempV_poplar_leaf_2d.tsv"
-    vbf_file = "/Users/sea/Projects/AMN/amn_release-main/Result/tempY_poplar_leaf_2d.csv"
+    predictions_file = "/Users/selalaoui/Projects/AMN/amn_release-main/Result/tempV_poplar_leaf_2d.tsv"
+    vbf_file = "/Users/selalaoui/Projects/AMN/amn_release-main/Result/tempY_poplar_leaf_2d.csv"
 
     V_df = pa.read_csv(predictions_file, sep='\t')
     # print(V_df.head())
@@ -286,7 +323,7 @@ def compare_predictions():
     print(Y_df.head())
 
 def all_kapp(value_col):
-    tmm_scores_file = "/Users/sea/Projects/QPSI_project/QPSI_Modeling/integration_results/reaction_scores_binding_Dec6/Poplar_tmm_scores.csv"
+    tmm_scores_file = "/Users/selalaoui/Projects/QPSI_project/QPSI_Modeling/integration_results/reaction_scores_binding_Dec6/Poplar_tmm_scores.csv"
     scores_df = pa.read_csv(tmm_scores_file)
     scores_df.rename(columns={'value':'score'}, inplace=True)
     value_col = 'score'
@@ -341,10 +378,7 @@ def all_kapp(value_col):
 
 
 if __name__ == '__main__':
-
-
     # all_kapp(value_col)
-
     compute = True
     if compute:
         all_control = generate_all_df(treatments, value_col='value', trmt_column='treatment', verbose=True)
@@ -362,7 +396,7 @@ if __name__ == '__main__':
     if compare:
         compare_predictions()
 
-        co_model = read_sbml_model("/Users/sea/Projects/AMN/omic_amn/Dataset_input/sbicolor_plastidial_model_duplicated.xml")
+        co_model = read_sbml_model("/Users/selalaoui/Projects/AMN/omic_amn/Dataset_input/sbicolor_plastidial_model_duplicated.xml")
         co2 = "EX_cpd00011_e0_i"
         vals = {"FeEx":328.0062545, "Control/ZnLim":606.3606508, "ZnEx":220.5894569, "FeLim":72.83864248}
         for trmt, val in vals.items():
